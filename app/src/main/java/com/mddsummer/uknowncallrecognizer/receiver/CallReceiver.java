@@ -9,6 +9,7 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 
 import com.android.internal.telephony.ITelephony;
+import com.mddsummer.uknowncallrecognizer.database.dao.DaoMsisdnHelper;
 import com.mddsummer.uknowncallrecognizer.service.HomescreenDialogService;
 
 import java.lang.reflect.Method;
@@ -46,27 +47,31 @@ public class CallReceiver extends PhoneCallReceiver {
             // Set msisdn if the homescreen dialog must be shown after the call
             sMsisdnToDecide = msisdn;
 
-            // End the call
-            try {
+            // If msisdn is blocked the call's goint to be finished
+            if(new DaoMsisdnHelper(context).isMsisdnBlocked(msisdn)) {
 
-                TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+                // End the call
+                try {
 
-                Class clazz = Class.forName(telephonyManager.getClass().getName());
+                    TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 
-                Method method = clazz.getDeclaredMethod("getITelephony");
-                method.setAccessible(true);
+                    Class clazz = Class.forName(telephonyManager.getClass().getName());
 
-                ITelephony telephonyService = (ITelephony) method.invoke(telephonyManager);
-                telephonyService.silenceRinger();
-                telephonyService.endCall();
+                    Method method = clazz.getDeclaredMethod("getITelephony");
+                    method.setAccessible(true);
 
-                Log.v(TAG, "Called hidden from msisdn: " + msisdn);
+                    ITelephony telephonyService = (ITelephony) method.invoke(telephonyManager);
+                    telephonyService.silenceRinger();
+                    telephonyService.endCall();
 
-            } catch (Exception e) {
-                e.printStackTrace();
-                // Some problem occurred while accessing private API
-                // TODO: do whatever error handling you want here
+                    Log.v(TAG, "Called hidden from msisdn: " + msisdn);
 
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    // Some problem occurred while accessing private API
+                    // TODO: do whatever error handling you want here
+
+                }
             }
         }
     }

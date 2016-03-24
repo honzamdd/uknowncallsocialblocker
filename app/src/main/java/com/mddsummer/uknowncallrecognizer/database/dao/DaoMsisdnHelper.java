@@ -5,7 +5,9 @@ import android.content.Context;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.mddsummer.uknowncallrecognizer.database.model.Msisdn;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author {@link "mailto:honzamusil@honzamusil.info" "Honza Musil"} on 24/3/2016
@@ -20,23 +22,21 @@ public class DaoMsisdnHelper extends DaoHelper {
         dao = getDatabaseHelper().getMsisdnDaoRuntime();
     }
 
-    public void createMenu(Msisdn msisdn) {
+    public void createMsisdn(Msisdn msisdn) {
         dao.createOrUpdate(msisdn);
-    }
-
-    public long getCount() {
-        return dao.countOf();
     }
 
     public List<Msisdn> getAll() {
         return dao.queryForAll();
     }
 
-    public Msisdn getById(int id) {
-        return dao.queryForId(id);
-    }
+    public boolean isMsisdnBlocked(String msisdn) {
 
-    public void deleteAll() {
-        dao.delete(getAll());
+        Map<String, Object> params = new HashMap<>();
+        params.put("msisdn", msisdn);
+        params.put("isBlocked", true);
+        List<Msisdn> result = dao.queryForFieldValues(params);
+
+        return (result != null && result.size() > 0);
     }
 }

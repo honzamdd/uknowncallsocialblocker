@@ -6,23 +6,30 @@
     android:layout_gravity="center"
     android:gravity="center">
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create new contact"
+        android:padding="@dimen/btn_padding"
+        android:text="@string/btn_create"
+        android:background="@android:color/transparent"
+        android:textColor="@android:color/holo_green_light"
         />
 
-    <Button
+    <TextView
+        android:id="@+id/block"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Block this number"
+        android:padding="@dimen/btn_padding"
+        android:textColor="@android:color/holo_red_dark"
+        android:text="@string/btn_block"
         />
 
-    <Button
+    <TextView
         android:id="@+id/close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Close this window"
+        android:padding="@dimen/btn_padding"
+        android:text="@string/btn_close"
         />
 
 </LinearLayout>

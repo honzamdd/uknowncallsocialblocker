@@ -21,6 +21,11 @@ public class Msisdn {
     public Msisdn() {
     }
 
+    public Msisdn(String msisdn, boolean isBlocked) {
+        this.msisdn = msisdn;
+        this.isBlocked = isBlocked;
+    }
+
     public long getId() {
         return id;
     }
