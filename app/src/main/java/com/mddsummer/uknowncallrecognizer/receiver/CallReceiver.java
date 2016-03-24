@@ -14,6 +14,14 @@ import com.mddsummer.uknowncallrecognizer.service.HomescreenDialogService;
 import java.lang.reflect.Method;
 import java.util.Date;
 
+/**
+ * CallReceiver - implements PhoneCallReceiver abstract methods. Currently onIncomingCallReceived
+ * and onIncomingCallEnded is implemented.
+ * This class ensures that an incoming calls from a blocked msisdns are rejected. Also calls service
+ * to display Homescreen dialog so user can choose what to do with unknown msisdn once the call is finished.
+ *
+ * @author  {@link "mailto:honzamusil@honzamusil.info" "Honza Musil"}
+ */
 public class CallReceiver extends PhoneCallReceiver {
 
     private static final String TAG = CallReceiver.class.getSimpleName();
