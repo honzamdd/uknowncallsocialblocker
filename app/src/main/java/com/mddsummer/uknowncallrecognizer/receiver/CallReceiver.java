@@ -20,7 +20,7 @@ import java.util.Date;
  * This class ensures that an incoming calls from a blocked msisdns are rejected. Also calls service
  * to display Homescreen dialog so user can choose what to do with unknown msisdn once the call is finished.
  *
- * @author  {@link "mailto:honzamusil@honzamusil.info" "Honza Musil"}
+ * @author  {@link "mailto:honzamusil@honzamusil.info" "Honza Musil"} on 24/3/2016
  */
 public class CallReceiver extends PhoneCallReceiver {
 
