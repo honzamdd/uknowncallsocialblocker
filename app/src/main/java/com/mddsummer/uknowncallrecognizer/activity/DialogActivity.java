@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,7 +14,14 @@ import com.mddsummer.uknowncallrecognizer.database.dao.DaoMsisdnHelper;
 import com.mddsummer.uknowncallrecognizer.database.model.Msisdn;
 import com.mddsummer.uknowncallrecognizer.service.HomescreenDialogService;
 
+/**
+ * This activity creates dialog on home screen.
+ *
+ * @author {@link "mailto:honzamusil@honzamusil.info" "Honza Musil"} on 24/3/2016
+ */
 public class DialogActivity extends Activity {
+
+    private static final String TAG = DialogActivity.class.getSimpleName();
 
     /**
      * Called when the activity is first created.
@@ -25,8 +33,7 @@ public class DialogActivity extends Activity {
 
         final String msisdn = getIntent().getStringExtra(HomescreenDialogService.MSISDN);
 
-        //TODO move title value to string.xml
-        setTitle("What to do with this msisdn: " + msisdn);
+        setTitle(getString(R.string.dialog_title) + " " + msisdn);
 
         // Block number
         TextView blockButton = (TextView) findViewById(R.id.block);
@@ -36,6 +43,7 @@ public class DialogActivity extends Activity {
             public void onClick(View view) {
                 Msisdn msisdnObj = new Msisdn(msisdn, true);
                 new DaoMsisdnHelper(DialogActivity.this).createMsisdn(msisdnObj);
+                finish();
             }
         });
 
@@ -47,14 +55,11 @@ public class DialogActivity extends Activity {
                 finish();
             }
         });
+    }
 
-        // Close activity once dialog is closed
-        Dialog dialog = (Dialog) closeButton.getParent();
-        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialogInterface) {
-                finish();
-            }
-        });
+    // Close activity once dialog is closed
+    protected void onPause() {
+        super.onPause();
+        finish();
     }
 }

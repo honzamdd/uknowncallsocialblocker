@@ -2,6 +2,7 @@ package com.mddsummer.uknowncallrecognizer.activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 
 import com.mddsummer.uknowncallrecognizer.fragment.NavigationDrawerFragment;
 import com.mddsummer.uknowncallrecognizer.R;
+import com.mddsummer.uknowncallrecognizer.service.HomescreenDialogService;
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -44,7 +46,6 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-
     }
 
     @Override

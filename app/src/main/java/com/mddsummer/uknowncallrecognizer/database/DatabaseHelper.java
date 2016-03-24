@@ -35,7 +35,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
                          ConnectionSource connectionSource) {
         try {
             Log.v(TAG, "onCreate");
-            TableUtils.createTable(connectionSource, String.class);
+            TableUtils.createTable(connectionSource, Msisdn.class);
 
         } catch (SQLException e) {
             Log.e(TAG, "Could not create tables: " + e.getMessage());
@@ -43,11 +43,10 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase,
-                          ConnectionSource connectionSource, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource, int oldVersion, int newVersion) {
         try {
             Log.v(DatabaseHelper.class.getName(), "onUpgrade");
-            TableUtils.dropTable(connectionSource, String.class, true);
+            TableUtils.dropTable(connectionSource, Msisdn.class, true);
 
             onCreate(sqLiteDatabase, connectionSource);
         } catch (SQLException e) {

@@ -14,4 +14,5 @@
     <string name="btn_block">Block</string>
     <string name="btn_close">Close</string>
     <string name="btn_create">Create new contact</string>
+    <string name="dialog_title">Calling number:</string>
 </resources>

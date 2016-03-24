@@ -27,7 +27,7 @@ public class CallReceiver extends PhoneCallReceiver {
 
     private static final String TAG = CallReceiver.class.getSimpleName();
 
-    String sMsisdnToDecide = null;
+    private static String sMsisdnToDecide = null;
 
     @Override
     protected void onIncomingCallReceived(Context context, String msisdn, Date start) {
@@ -64,8 +64,6 @@ public class CallReceiver extends PhoneCallReceiver {
                     telephonyService.silenceRinger();
                     telephonyService.endCall();
 
-                    Log.v(TAG, "Called hidden from msisdn: " + msisdn);
-
                 } catch (Exception e) {
                     e.printStackTrace();
                     // Some problem occurred while accessing private API
@@ -84,6 +82,8 @@ public class CallReceiver extends PhoneCallReceiver {
     @Override
     protected void onIncomingCallEnded(Context context, String msisdn, Date start, Date end) {
         Log.v(TAG, "onIncomingCallEnded: " + msisdn);
+
+        Log.v(TAG, "MsisdnToDecide: " + sMsisdnToDecide);
 
         if (sMsisdnToDecide != null) {
             Intent dialogIntent = new Intent(context, HomescreenDialogService.class);
@@ -131,6 +131,7 @@ public class CallReceiver extends PhoneCallReceiver {
             if (cur != null)
                 cur.close();
         }
+
         return false;
     }
 }
