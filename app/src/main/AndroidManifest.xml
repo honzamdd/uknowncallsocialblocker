@@ -34,7 +34,7 @@
             </intent-filter>
         </receiver>
 
-        <service android:enabled="true" android:name=".service.HomePopupDataService" />
+        <service android:enabled="true" android:name=".service.HomescreenDialogService" />
 
     </application>
 

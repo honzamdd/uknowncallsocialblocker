@@ -2,26 +2,43 @@ package com.mddsummer.uknowncallrecognizer.receiver;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.ContactsContract;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
+import com.android.internal.telephony.ITelephony;
+import com.mddsummer.uknowncallrecognizer.service.HomescreenDialogService;
+
 import java.lang.reflect.Method;
 import java.util.Date;
-import com.android.internal.telephony.ITelephony;
-import com.mddsummer.uknowncallrecognizer.activity.MainActivity;
-import com.mddsummer.uknowncallrecognizer.service.HomePopupDataService;
 
 public class CallReceiver extends PhoneCallReceiver {
 
     private static final String TAG = CallReceiver.class.getSimpleName();
 
+    String sMsisdnToDecide = null;
+
     @Override
-    protected void onIncomingCallReceived(Context context, String number, Date start) {
+    protected void onIncomingCallReceived(Context context, String msisdn, Date start) {
 
-        Log.v(TAG, "onIncomingCallReceived: " + number);
+        // Reset
+        sMsisdnToDecide = null;
 
-        if(!MainActivity.contactExists(context, number)) {
+        Log.v(TAG, "onIncomingCallReceived: " + msisdn);
 
+        /*
+         * Check if incoming msisdn exists in a users' contacts.
+         * If yes continue the incoming call process, if no check if the msisdn is flagged as blocked in db.
+         * If msisdn is blocked, end the call otherwise continue call process.
+         */
+        if (!contactExists(context, msisdn)) {
+
+            // Set msisdn if the homescreen dialog must be shown after the call
+            sMsisdnToDecide = msisdn;
+
+            // End the call
             try {
 
                 TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
@@ -35,7 +52,7 @@ public class CallReceiver extends PhoneCallReceiver {
                 telephonyService.silenceRinger();
                 telephonyService.endCall();
 
-                Log.v(TAG, "Called hidden from number: " + number);
+                Log.v(TAG, "Called hidden from msisdn: " + msisdn);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -47,54 +64,60 @@ public class CallReceiver extends PhoneCallReceiver {
     }
 
     @Override
-    protected void onIncomingCallAnswered(Context ctx, String number, Date start) {
-        Log.v(TAG, "onIncomingCallAnswered: " + number);
+    protected void onIncomingCallAnswered(Context context, String msisdn, Date start) {
+        Log.v(TAG, "onIncomingCallAnswered: " + msisdn);
     }
 
     @Override
-    protected void onIncomingCallEnded(Context ctx, String number, Date start, Date end) {
-        Log.v(TAG, "onIncomingCallEnded: " + number);
+    protected void onIncomingCallEnded(Context context, String msisdn, Date start, Date end) {
+        Log.v(TAG, "onIncomingCallEnded: " + msisdn);
 
-        //TODO open dialog "create new contact", "block"
+        if (sMsisdnToDecide != null) {
+            Intent dialogIntent = new Intent(context, HomescreenDialogService.class);
+            dialogIntent.putExtra(HomescreenDialogService.MSISDN, msisdn);
+            context.startService(dialogIntent);
+        }
     }
 
     @Override
-    protected void onOutgoingCallStarted(Context ctx, String number, Date start) {
-        Log.v(TAG, "onOutgoingCallStarted: " + number);
+    protected void onOutgoingCallStarted(Context context, String msisdn, Date start) {
+        Log.v(TAG, "onOutgoingCallStarted: " + msisdn);
     }
 
     @Override
-    protected void onOutgoingCallEnded(Context ctx, String number, Date start, Date end) {
-        Log.v(TAG, "onOutgoingCallEnded: " + number);
+    protected void onOutgoingCallEnded(Context context, String msisdn, Date start, Date end) {
+        Log.v(TAG, "onOutgoingCallEnded: " + msisdn);
     }
 
     @Override
-    protected void onMissedCall(Context ctx, String number, Date start) {
-        Log.v(TAG, "onMissedCall: " + number);
+    protected void onMissedCall(Context context, String msisdn, Date start) {
+        Log.v(TAG, "onMissedCall: " + msisdn);
 
-        ctx.startService(new Intent(ctx, HomePopupDataService.class));
+    }
+
+    /**
+     * Check if msisdn exists in
+     *
+     * @param context
+     * @param msisdn
+     * @return
+     */
+    private static boolean contactExists(Context context, String msisdn) {
+
+        Uri lookupUri = Uri.withAppendedPath(
+                ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
+                Uri.encode(msisdn));
+
+        String[] mPhoneNumberProjection = {ContactsContract.PhoneLookup._ID, ContactsContract.PhoneLookup.NUMBER, ContactsContract.PhoneLookup.DISPLAY_NAME};
+        Cursor cur = context.getContentResolver().query(lookupUri, mPhoneNumberProjection, null, null, null);
+        try {
+            if (cur.moveToFirst()) {
+                return true;
+            }
+        } finally {
+            if (cur != null)
+                cur.close();
+        }
+        return false;
     }
 }
-
-//Missed call
-//03-23 19:30:24.070 20078-20078/com.mddsummer.uknowncallrecognizer I/art: Can not find class: Lcom/mddsummer/uknowncallrecognizer/CallReceiver;
-//        03-23 19:30:24.080 20078-20078/com.mddsummer.uknowncallrecognizer V/CallReceiver: onIncomingCallReceived: +420732194453
-//        03-23 19:30:24.900 20078-20078/com.mddsummer.uknowncallrecognizer I/art: Can not find class: Lcom/mddsummer/uknowncallrecognizer/CallReceiver;
-//        03-23 19:30:32.790 20078-20078/com.mddsummer.uknowncallrecognizer I/art: Can not find class: Lcom/mddsummer/uknowncallrecognizer/CallReceiver;
-//        03-23 19:30:32.790 20078-20078/com.mddsummer.uknowncallrecognizer V/CallReceiver: onMissedCall: +420732194453
-//        03-23 19:30:32.810 20078-20078/com.mddsummer.uknowncallrecognizer I/art: Can not find class: Lcom/mddsummer/uknowncallrecognizer/CallReceiver;
-//        03-23 19:30:43.440 20078-20078/com.mddsummer.uknowncallrecognizer I/art: Can not find class: Lcom/mddsummer/uknowncallrecognizer/CallReceiver;
-
-
-//Answered call
-//        03-23 19:30:43.440 20078-20078/com.mddsummer.uknowncallrecognizer V/CallReceiver: onIncomingCallReceived: +420732194453
-//        03-23 19:30:44.230 20078-20078/com.mddsummer.uknowncallrecognizer I/art: Can not find class: Lcom/mddsummer/uknowncallrecognizer/CallReceiver;
-//        03-23 19:30:52.000 20078-20078/com.mddsummer.uknowncallrecognizer I/art: Can not find class: Lcom/mddsummer/uknowncallrecognizer/CallReceiver;
-//        03-23 19:30:52.000 20078-20078/com.mddsummer.uknowncallrecognizer V/CallReceiver: onIncomingCallAnswered: +420732194453
-//        03-23 19:30:52.230 20078-20078/com.mddsummer.uknowncallrecognizer I/art: Can not find class: Lcom/mddsummer/uknowncallrecognizer/CallReceiver;
-//
-//        [ 03-23 19:30:52.230  3909: 3909 D/         ]
-//static CNfcConfig& CNfcConfig::GetInstance() NFC real_config_name[21]: libnfc-nxp-alice.conf
-//        03-23 19:30:55.310 20078-20078/com.mddsummer.uknowncallrecognizer I/art: Can not find class: Lcom/mddsummer/uknowncallrecognizer/CallReceiver;
-//        03-23 19:30:55.310 20078-20078/com.mddsummer.uknowncallrecognizer V/CallReceiver: onIncomingCallEnded: +420732194453
-//        03-23 19:30:55.330 20078-20078/com.mddsummer.uknowncallrecognizer I/art: Can not find class: Lcom/mddsummer/uknowncallrecognizer/CallReceiver;

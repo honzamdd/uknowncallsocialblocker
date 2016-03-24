@@ -2,12 +2,10 @@ package com.mddsummer.uknowncallrecognizer.activity;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -19,7 +17,6 @@ import android.view.ViewGroup;
 
 import com.mddsummer.uknowncallrecognizer.fragment.NavigationDrawerFragment;
 import com.mddsummer.uknowncallrecognizer.R;
-import com.mddsummer.uknowncallrecognizer.service.HomePopupDataService;
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -118,23 +115,5 @@ public class MainActivity extends ActionBarActivity
             ((MainActivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
-    }
-
-    public static boolean contactExists(Context context, String number) {
-/// number is the phone number
-        Uri lookupUri = Uri.withAppendedPath(
-                ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
-                Uri.encode(number));
-        String[] mPhoneNumberProjection = {ContactsContract.PhoneLookup._ID, ContactsContract.PhoneLookup.NUMBER, ContactsContract.PhoneLookup.DISPLAY_NAME};
-        Cursor cur = context.getContentResolver().query(lookupUri, mPhoneNumberProjection, null, null, null);
-        try {
-            if (cur.moveToFirst()) {
-                return true;
-            }
-        } finally {
-            if (cur != null)
-                cur.close();
-        }
-        return false;
     }
 }

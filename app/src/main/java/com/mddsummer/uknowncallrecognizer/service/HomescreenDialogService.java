@@ -7,16 +7,19 @@ import android.util.Log;
 
 import com.mddsummer.uknowncallrecognizer.activity.DialogActivity;
 
-public class HomePopupDataService extends Service {
+/**
+ * Service to start activity that displays dialog in homescreen
+ */
+public class HomescreenDialogService extends Service {
 
-    private static final String TAG = HomePopupDataService.class.getSimpleName();
+    private static final String TAG = HomescreenDialogService.class.getSimpleName();
+    public static final String MSISDN = "msisdn";
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.v(TAG, "Start service");
 
-        Intent dialogIntent = new Intent(getApplicationContext(),
-                DialogActivity.class);
+        Intent dialogIntent = new Intent(getApplicationContext(), DialogActivity.class);
+        dialogIntent.putExtra(MSISDN, intent.getStringExtra(MSISDN));
 
         dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         getApplicationContext().startActivity(dialogIntent);
@@ -26,7 +29,6 @@ public class HomePopupDataService extends Service {
 
     @Override
     public IBinder onBind(Intent arg0) {
-        Log.v(TAG, "OnBind");
         return null;
     }
 }
