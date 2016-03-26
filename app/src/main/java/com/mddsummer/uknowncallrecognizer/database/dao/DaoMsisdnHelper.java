@@ -23,7 +23,16 @@ public class DaoMsisdnHelper extends DaoHelper {
     }
 
     public void createMsisdn(Msisdn msisdn) {
-        dao.createOrUpdate(msisdn);
+        if (getByMsisdn(msisdn.getMsisdn()) == null)
+            dao.createOrUpdate(msisdn);
+    }
+
+    public Msisdn getByMsisdn(String msisdn) {
+        List<Msisdn> msisdnList = dao.queryForEq("msisdn", msisdn);
+        if (msisdnList == null || msisdnList.size() == 0)
+            return null;
+
+        return msisdnList.get(0);
     }
 
     public List<Msisdn> getAll() {
@@ -38,5 +47,9 @@ public class DaoMsisdnHelper extends DaoHelper {
         List<Msisdn> result = dao.queryForFieldValues(params);
 
         return (result != null && result.size() > 0);
+    }
+
+    public void delete(Msisdn msisdn) {
+        dao.delete(msisdn);
     }
 }

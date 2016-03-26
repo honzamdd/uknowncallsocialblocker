@@ -39,7 +39,7 @@ public abstract class PhoneCallReceiver extends BroadcastReceiver {
         }
     }
 
-    
+
     //Deals with actual events
 
     //Incoming call-  goes from IDLE to RINGING when it rings, to OFFHOOK when it's answered, to IDLE when its hung up
@@ -86,10 +86,13 @@ public abstract class PhoneCallReceiver extends BroadcastReceiver {
 
     //Derived classes should override these to respond to specific events of interest
     protected abstract void onIncomingCallReceived(Context ctx, String number, Date start);
+
     protected abstract void onIncomingCallAnswered(Context ctx, String number, Date start);
+
     protected abstract void onIncomingCallEnded(Context ctx, String number, Date start, Date end);
 
     protected abstract void onOutgoingCallStarted(Context ctx, String number, Date start);
+
     protected abstract void onOutgoingCallEnded(Context ctx, String number, Date start, Date end);
 
     protected abstract void onMissedCall(Context ctx, String number, Date start);

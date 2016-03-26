@@ -21,7 +21,7 @@ import java.util.Date;
  * This class ensures that an incoming calls from a blocked msisdns are rejected. Also calls service
  * to display Homescreen dialog so user can choose what to do with unknown msisdn once the call is finished.
  *
- * @author  {@link "mailto:honzamusil@honzamusil.info" "Honza Musil"} on 24/3/2016
+ * @author {@link "mailto:honzamusil@honzamusil.info" "Honza Musil"} on 24/3/2016
  */
 public class CallReceiver extends PhoneCallReceiver {
 
@@ -48,7 +48,7 @@ public class CallReceiver extends PhoneCallReceiver {
             sMsisdnToDecide = msisdn;
 
             // If msisdn is blocked the call's goint to be finished
-            if(new DaoMsisdnHelper(context).isMsisdnBlocked(msisdn)) {
+            if (new DaoMsisdnHelper(context).isMsisdnBlocked(msisdn)) {
 
                 // End the call
                 try {

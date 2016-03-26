@@ -15,4 +15,9 @@
     <string name="btn_close">Close</string>
     <string name="btn_create">Create new contact</string>
     <string name="dialog_title">Calling number:</string>
+    <string name="empty_list">No blocked numbers</string>
+    <string name="deletedialog_title">Unblock number</string>
+    <string name="deletedialog_content">Are you sure you want to unblock this number: #MSISDN?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

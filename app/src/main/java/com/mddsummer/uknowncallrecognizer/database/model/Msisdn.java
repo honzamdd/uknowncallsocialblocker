@@ -4,7 +4,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 /**
- * @author  {@link "mailto:honzamusil@honzamusil.info" "Honza Musil"} on 24/3/2016
+ * @author {@link "mailto:honzamusil@honzamusil.info" "Honza Musil"} on 24/3/2016
  */
 @DatabaseTable
 public class Msisdn {
@@ -52,10 +52,6 @@ public class Msisdn {
 
     @Override
     public String toString() {
-        return "Msisdn{" +
-                "id=" + id +
-                ", msisdn='" + msisdn + '\'' +
-                ", isBlocked=" + isBlocked +
-                '}';
+        return getMsisdn();
     }
 }

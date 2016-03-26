@@ -3,54 +3,56 @@
  * Original file: frameworks/base/telephony/java/com/android/internal/telephony/ITelephony.aidl
  */
 package com.android.internal.telephony;
+
 /**
  * Interface used to interact with the phone.  Mostly this is used by the
  * TelephonyManager class.  A few places are still using this directly.
  * Please clean them up if possible and use TelephonyManager insteadl.
- *
+ * <p/>
  * {@hide}
  */
-public interface ITelephony extends android.os.IInterface
-{
-    /** Local-side IPC implementation stub class. */
-    public static abstract class Stub extends android.os.Binder implements com.android.internal.telephony.ITelephony
-    {
+public interface ITelephony extends android.os.IInterface {
+    /**
+     * Local-side IPC implementation stub class.
+     */
+    public static abstract class Stub extends android.os.Binder implements com.android.internal.telephony.ITelephony {
         private static final java.lang.String DESCRIPTOR = "com.android.internal.telephony.ITelephony";
-        /** Construct the stub at attach it to the interface. */
-        public Stub()
-        {
+
+        /**
+         * Construct the stub at attach it to the interface.
+         */
+        public Stub() {
             this.attachInterface(this, DESCRIPTOR);
         }
+
         /**
          * Cast an IBinder object into an com.android.internal.telephony.ITelephony interface,
          * generating a proxy if needed.
          */
-        public static com.android.internal.telephony.ITelephony asInterface(android.os.IBinder obj)
-        {
-            if ((obj==null)) {
+        public static com.android.internal.telephony.ITelephony asInterface(android.os.IBinder obj) {
+            if ((obj == null)) {
                 return null;
             }
             android.os.IInterface iin = obj.queryLocalInterface(DESCRIPTOR);
-            if (((iin!=null)&&(iin instanceof com.android.internal.telephony.ITelephony))) {
-                return ((com.android.internal.telephony.ITelephony)iin);
+            if (((iin != null) && (iin instanceof com.android.internal.telephony.ITelephony))) {
+                return ((com.android.internal.telephony.ITelephony) iin);
             }
             return new com.android.internal.telephony.ITelephony.Stub.Proxy(obj);
         }
-        @Override public android.os.IBinder asBinder()
-        {
+
+        @Override
+        public android.os.IBinder asBinder() {
             return this;
         }
-        @Override public boolean onTransact(int code, android.os.Parcel data, android.os.Parcel reply, int flags) throws android.os.RemoteException
-        {
-            switch (code)
-            {
-                case INTERFACE_TRANSACTION:
-                {
+
+        @Override
+        public boolean onTransact(int code, android.os.Parcel data, android.os.Parcel reply, int flags) throws android.os.RemoteException {
+            switch (code) {
+                case INTERFACE_TRANSACTION: {
                     reply.writeString(DESCRIPTOR);
                     return true;
                 }
-                case TRANSACTION_dial:
-                {
+                case TRANSACTION_dial: {
                     data.enforceInterface(DESCRIPTOR);
                     java.lang.String _arg0;
                     _arg0 = data.readString();
@@ -58,8 +60,7 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeNoException();
                     return true;
                 }
-                case TRANSACTION_call:
-                {
+                case TRANSACTION_call: {
                     data.enforceInterface(DESCRIPTOR);
                     java.lang.String _arg0;
                     _arg0 = data.readString();
@@ -69,130 +70,115 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeNoException();
                     return true;
                 }
-                case TRANSACTION_endCall:
-                {
+                case TRANSACTION_endCall: {
                     data.enforceInterface(DESCRIPTOR);
                     boolean _result = this.endCall();
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_endCallForSubscriber:
-                {
+                case TRANSACTION_endCallForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
                     boolean _result = this.endCallForSubscriber(_arg0);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_answerRingingCall:
-                {
+                case TRANSACTION_answerRingingCall: {
                     data.enforceInterface(DESCRIPTOR);
                     this.answerRingingCall();
                     reply.writeNoException();
                     return true;
                 }
-                case TRANSACTION_silenceRinger:
-                {
+                case TRANSACTION_silenceRinger: {
                     data.enforceInterface(DESCRIPTOR);
                     this.silenceRinger();
                     reply.writeNoException();
                     return true;
                 }
-                case TRANSACTION_isOffhook:
-                {
+                case TRANSACTION_isOffhook: {
                     data.enforceInterface(DESCRIPTOR);
                     boolean _result = this.isOffhook();
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_isOffhookForSubscriber:
-                {
+                case TRANSACTION_isOffhookForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
                     boolean _result = this.isOffhookForSubscriber(_arg0);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_isRingingForSubscriber:
-                {
+                case TRANSACTION_isRingingForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
                     boolean _result = this.isRingingForSubscriber(_arg0);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_isRinging:
-                {
+                case TRANSACTION_isRinging: {
                     data.enforceInterface(DESCRIPTOR);
                     boolean _result = this.isRinging();
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_isIdle:
-                {
+                case TRANSACTION_isIdle: {
                     data.enforceInterface(DESCRIPTOR);
                     boolean _result = this.isIdle();
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_isIdleForSubscriber:
-                {
+                case TRANSACTION_isIdleForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
                     boolean _result = this.isIdleForSubscriber(_arg0);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_isRadioOn:
-                {
+                case TRANSACTION_isRadioOn: {
                     data.enforceInterface(DESCRIPTOR);
                     boolean _result = this.isRadioOn();
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_isRadioOnForSubscriber:
-                {
+                case TRANSACTION_isRadioOnForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
                     boolean _result = this.isRadioOnForSubscriber(_arg0);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_isSimPinEnabled:
-                {
+                case TRANSACTION_isSimPinEnabled: {
                     data.enforceInterface(DESCRIPTOR);
                     boolean _result = this.isSimPinEnabled();
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_supplyPin:
-                {
+                case TRANSACTION_supplyPin: {
                     data.enforceInterface(DESCRIPTOR);
                     java.lang.String _arg0;
                     _arg0 = data.readString();
                     boolean _result = this.supplyPin(_arg0);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_supplyPinForSubscriber:
-                {
+                case TRANSACTION_supplyPinForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -200,11 +186,10 @@ public interface ITelephony extends android.os.IInterface
                     _arg1 = data.readString();
                     boolean _result = this.supplyPinForSubscriber(_arg0, _arg1);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_supplyPuk:
-                {
+                case TRANSACTION_supplyPuk: {
                     data.enforceInterface(DESCRIPTOR);
                     java.lang.String _arg0;
                     _arg0 = data.readString();
@@ -212,11 +197,10 @@ public interface ITelephony extends android.os.IInterface
                     _arg1 = data.readString();
                     boolean _result = this.supplyPuk(_arg0, _arg1);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_supplyPukForSubscriber:
-                {
+                case TRANSACTION_supplyPukForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -226,11 +210,10 @@ public interface ITelephony extends android.os.IInterface
                     _arg2 = data.readString();
                     boolean _result = this.supplyPukForSubscriber(_arg0, _arg1, _arg2);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_supplyPinReportResult:
-                {
+                case TRANSACTION_supplyPinReportResult: {
                     data.enforceInterface(DESCRIPTOR);
                     java.lang.String _arg0;
                     _arg0 = data.readString();
@@ -239,8 +222,7 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeIntArray(_result);
                     return true;
                 }
-                case TRANSACTION_supplyPinReportResultForSubscriber:
-                {
+                case TRANSACTION_supplyPinReportResultForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -251,8 +233,7 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeIntArray(_result);
                     return true;
                 }
-                case TRANSACTION_supplyPukReportResult:
-                {
+                case TRANSACTION_supplyPukReportResult: {
                     data.enforceInterface(DESCRIPTOR);
                     java.lang.String _arg0;
                     _arg0 = data.readString();
@@ -263,8 +244,7 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeIntArray(_result);
                     return true;
                 }
-                case TRANSACTION_supplyPukReportResultForSubscriber:
-                {
+                case TRANSACTION_supplyPukReportResultForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -277,18 +257,16 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeIntArray(_result);
                     return true;
                 }
-                case TRANSACTION_handlePinMmi:
-                {
+                case TRANSACTION_handlePinMmi: {
                     data.enforceInterface(DESCRIPTOR);
                     java.lang.String _arg0;
                     _arg0 = data.readString();
                     boolean _result = this.handlePinMmi(_arg0);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_handlePinMmiForSubscriber:
-                {
+                case TRANSACTION_handlePinMmiForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -296,18 +274,16 @@ public interface ITelephony extends android.os.IInterface
                     _arg1 = data.readString();
                     boolean _result = this.handlePinMmiForSubscriber(_arg0, _arg1);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_toggleRadioOnOff:
-                {
+                case TRANSACTION_toggleRadioOnOff: {
                     data.enforceInterface(DESCRIPTOR);
                     this.toggleRadioOnOff();
                     reply.writeNoException();
                     return true;
                 }
-                case TRANSACTION_toggleRadioOnOffForSubscriber:
-                {
+                case TRANSACTION_toggleRadioOnOffForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -315,47 +291,42 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeNoException();
                     return true;
                 }
-                case TRANSACTION_setRadio:
-                {
+                case TRANSACTION_setRadio: {
                     data.enforceInterface(DESCRIPTOR);
                     boolean _arg0;
-                    _arg0 = (0!=data.readInt());
+                    _arg0 = (0 != data.readInt());
                     boolean _result = this.setRadio(_arg0);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_setRadioForSubscriber:
-                {
+                case TRANSACTION_setRadioForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
                     boolean _arg1;
-                    _arg1 = (0!=data.readInt());
+                    _arg1 = (0 != data.readInt());
                     boolean _result = this.setRadioForSubscriber(_arg0, _arg1);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_setRadioPower:
-                {
+                case TRANSACTION_setRadioPower: {
                     data.enforceInterface(DESCRIPTOR);
                     boolean _arg0;
-                    _arg0 = (0!=data.readInt());
+                    _arg0 = (0 != data.readInt());
                     boolean _result = this.setRadioPower(_arg0);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_updateServiceLocation:
-                {
+                case TRANSACTION_updateServiceLocation: {
                     data.enforceInterface(DESCRIPTOR);
                     this.updateServiceLocation();
                     reply.writeNoException();
                     return true;
                 }
-                case TRANSACTION_updateServiceLocationForSubscriber:
-                {
+                case TRANSACTION_updateServiceLocationForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -363,15 +334,13 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeNoException();
                     return true;
                 }
-                case TRANSACTION_enableLocationUpdates:
-                {
+                case TRANSACTION_enableLocationUpdates: {
                     data.enforceInterface(DESCRIPTOR);
                     this.enableLocationUpdates();
                     reply.writeNoException();
                     return true;
                 }
-                case TRANSACTION_enableLocationUpdatesForSubscriber:
-                {
+                case TRANSACTION_enableLocationUpdatesForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -379,15 +348,13 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeNoException();
                     return true;
                 }
-                case TRANSACTION_disableLocationUpdates:
-                {
+                case TRANSACTION_disableLocationUpdates: {
                     data.enforceInterface(DESCRIPTOR);
                     this.disableLocationUpdates();
                     reply.writeNoException();
                     return true;
                 }
-                case TRANSACTION_disableLocationUpdatesForSubscriber:
-                {
+                case TRANSACTION_disableLocationUpdatesForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -395,46 +362,40 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeNoException();
                     return true;
                 }
-                case TRANSACTION_enableDataConnectivity:
-                {
+                case TRANSACTION_enableDataConnectivity: {
                     data.enforceInterface(DESCRIPTOR);
                     boolean _result = this.enableDataConnectivity();
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_disableDataConnectivity:
-                {
+                case TRANSACTION_disableDataConnectivity: {
                     data.enforceInterface(DESCRIPTOR);
                     boolean _result = this.disableDataConnectivity();
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_isDataConnectivityPossible:
-                {
+                case TRANSACTION_isDataConnectivityPossible: {
                     data.enforceInterface(DESCRIPTOR);
                     boolean _result = this.isDataConnectivityPossible();
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_getCellLocation:
-                {
+                case TRANSACTION_getCellLocation: {
                     data.enforceInterface(DESCRIPTOR);
                     android.os.Bundle _result = this.getCellLocation();
                     reply.writeNoException();
-                    if ((_result!=null)) {
+                    if ((_result != null)) {
                         reply.writeInt(1);
                         _result.writeToParcel(reply, android.os.Parcelable.PARCELABLE_WRITE_RETURN_VALUE);
-                    }
-                    else {
+                    } else {
                         reply.writeInt(0);
                     }
                     return true;
                 }
-                case TRANSACTION_getNeighboringCellInfo:
-                {
+                case TRANSACTION_getNeighboringCellInfo: {
                     data.enforceInterface(DESCRIPTOR);
                     java.lang.String _arg0;
                     _arg0 = data.readString();
@@ -443,16 +404,14 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeTypedList(_result);
                     return true;
                 }
-                case TRANSACTION_getCallState:
-                {
+                case TRANSACTION_getCallState: {
                     data.enforceInterface(DESCRIPTOR);
                     int _result = this.getCallState();
                     reply.writeNoException();
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getCallStateForSubscriber:
-                {
+                case TRANSACTION_getCallStateForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -461,32 +420,28 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getDataActivity:
-                {
+                case TRANSACTION_getDataActivity: {
                     data.enforceInterface(DESCRIPTOR);
                     int _result = this.getDataActivity();
                     reply.writeNoException();
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getDataState:
-                {
+                case TRANSACTION_getDataState: {
                     data.enforceInterface(DESCRIPTOR);
                     int _result = this.getDataState();
                     reply.writeNoException();
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getActivePhoneType:
-                {
+                case TRANSACTION_getActivePhoneType: {
                     data.enforceInterface(DESCRIPTOR);
                     int _result = this.getActivePhoneType();
                     reply.writeNoException();
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getActivePhoneTypeForSubscriber:
-                {
+                case TRANSACTION_getActivePhoneTypeForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -495,16 +450,14 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getCdmaEriIconIndex:
-                {
+                case TRANSACTION_getCdmaEriIconIndex: {
                     data.enforceInterface(DESCRIPTOR);
                     int _result = this.getCdmaEriIconIndex();
                     reply.writeNoException();
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getCdmaEriIconIndexForSubscriber:
-                {
+                case TRANSACTION_getCdmaEriIconIndexForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -513,16 +466,14 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getCdmaEriIconMode:
-                {
+                case TRANSACTION_getCdmaEriIconMode: {
                     data.enforceInterface(DESCRIPTOR);
                     int _result = this.getCdmaEriIconMode();
                     reply.writeNoException();
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getCdmaEriIconModeForSubscriber:
-                {
+                case TRANSACTION_getCdmaEriIconModeForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -531,16 +482,14 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getCdmaEriText:
-                {
+                case TRANSACTION_getCdmaEriText: {
                     data.enforceInterface(DESCRIPTOR);
                     java.lang.String _result = this.getCdmaEriText();
                     reply.writeNoException();
                     reply.writeString(_result);
                     return true;
                 }
-                case TRANSACTION_getCdmaEriTextForSubscriber:
-                {
+                case TRANSACTION_getCdmaEriTextForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -549,24 +498,21 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeString(_result);
                     return true;
                 }
-                case TRANSACTION_needsOtaServiceProvisioning:
-                {
+                case TRANSACTION_needsOtaServiceProvisioning: {
                     data.enforceInterface(DESCRIPTOR);
                     boolean _result = this.needsOtaServiceProvisioning();
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_getVoiceMessageCount:
-                {
+                case TRANSACTION_getVoiceMessageCount: {
                     data.enforceInterface(DESCRIPTOR);
                     int _result = this.getVoiceMessageCount();
                     reply.writeNoException();
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getVoiceMessageCountForSubscriber:
-                {
+                case TRANSACTION_getVoiceMessageCountForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -575,16 +521,14 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getNetworkType:
-                {
+                case TRANSACTION_getNetworkType: {
                     data.enforceInterface(DESCRIPTOR);
                     int _result = this.getNetworkType();
                     reply.writeNoException();
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getNetworkTypeForSubscriber:
-                {
+                case TRANSACTION_getNetworkTypeForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -593,16 +537,14 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getDataNetworkType:
-                {
+                case TRANSACTION_getDataNetworkType: {
                     data.enforceInterface(DESCRIPTOR);
                     int _result = this.getDataNetworkType();
                     reply.writeNoException();
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getDataNetworkTypeForSubscriber:
-                {
+                case TRANSACTION_getDataNetworkTypeForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -611,16 +553,14 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getVoiceNetworkType:
-                {
+                case TRANSACTION_getVoiceNetworkType: {
                     data.enforceInterface(DESCRIPTOR);
                     int _result = this.getVoiceNetworkType();
                     reply.writeNoException();
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getVoiceNetworkTypeForSubscriber:
-                {
+                case TRANSACTION_getVoiceNetworkTypeForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -629,34 +569,30 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_hasIccCard:
-                {
+                case TRANSACTION_hasIccCard: {
                     data.enforceInterface(DESCRIPTOR);
                     boolean _result = this.hasIccCard();
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_hasIccCardUsingSlotId:
-                {
+                case TRANSACTION_hasIccCardUsingSlotId: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
                     boolean _result = this.hasIccCardUsingSlotId(_arg0);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_getLteOnCdmaMode:
-                {
+                case TRANSACTION_getLteOnCdmaMode: {
                     data.enforceInterface(DESCRIPTOR);
                     int _result = this.getLteOnCdmaMode();
                     reply.writeNoException();
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getLteOnCdmaModeForSubscriber:
-                {
+                case TRANSACTION_getLteOnCdmaModeForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -665,16 +601,14 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getAllCellInfo:
-                {
+                case TRANSACTION_getAllCellInfo: {
                     data.enforceInterface(DESCRIPTOR);
                     java.util.List<android.telephony.CellInfo> _result = this.getAllCellInfo();
                     reply.writeNoException();
                     reply.writeTypedList(_result);
                     return true;
                 }
-                case TRANSACTION_setCellInfoListRate:
-                {
+                case TRANSACTION_setCellInfoListRate: {
                     data.enforceInterface(DESCRIPTOR);
                     int _arg0;
                     _arg0 = data.readInt();
@@ -682,42 +616,37 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeNoException();
                     return true;
                 }
-                case TRANSACTION_getDefaultSim:
-                {
+                case TRANSACTION_getDefaultSim: {
                     data.enforceInterface(DESCRIPTOR);
                     int _result = this.getDefaultSim();
                     reply.writeNoException();
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_iccOpenLogicalChannel:
-                {
+                case TRANSACTION_iccOpenLogicalChannel: {
                     data.enforceInterface(DESCRIPTOR);
                     java.lang.String _arg0;
                     _arg0 = data.readString();
                     android.telephony.IccOpenLogicalChannelResponse _result = this.iccOpenLogicalChannel(_arg0);
                     reply.writeNoException();
-                    if ((_result!=null)) {
+                    if ((_result != null)) {
                         reply.writeInt(1);
                         _result.writeToParcel(reply, android.os.Parcelable.PARCELABLE_WRITE_RETURN_VALUE);
-                    }
-                    else {
+                    } else {
                         reply.writeInt(0);
                     }
                     return true;
                 }
-                case TRANSACTION_iccCloseLogicalChannel:
-                {
+                case TRANSACTION_iccCloseLogicalChannel: {
                     data.enforceInterface(DESCRIPTOR);
                     int _arg0;
                     _arg0 = data.readInt();
                     boolean _result = this.iccCloseLogicalChannel(_arg0);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_iccTransmitApduLogicalChannel:
-                {
+                case TRANSACTION_iccTransmitApduLogicalChannel: {
                     data.enforceInterface(DESCRIPTOR);
                     int _arg0;
                     _arg0 = data.readInt();
@@ -738,8 +667,7 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeString(_result);
                     return true;
                 }
-                case TRANSACTION_iccTransmitApduBasicChannel:
-                {
+                case TRANSACTION_iccTransmitApduBasicChannel: {
                     data.enforceInterface(DESCRIPTOR);
                     int _arg0;
                     _arg0 = data.readInt();
@@ -758,8 +686,7 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeString(_result);
                     return true;
                 }
-                case TRANSACTION_iccExchangeSimIO:
-                {
+                case TRANSACTION_iccExchangeSimIO: {
                     data.enforceInterface(DESCRIPTOR);
                     int _arg0;
                     _arg0 = data.readInt();
@@ -778,8 +705,7 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeByteArray(_result);
                     return true;
                 }
-                case TRANSACTION_sendEnvelopeWithStatus:
-                {
+                case TRANSACTION_sendEnvelopeWithStatus: {
                     data.enforceInterface(DESCRIPTOR);
                     java.lang.String _arg0;
                     _arg0 = data.readString();
@@ -788,8 +714,7 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeString(_result);
                     return true;
                 }
-                case TRANSACTION_nvReadItem:
-                {
+                case TRANSACTION_nvReadItem: {
                     data.enforceInterface(DESCRIPTOR);
                     int _arg0;
                     _arg0 = data.readInt();
@@ -798,8 +723,7 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeString(_result);
                     return true;
                 }
-                case TRANSACTION_nvWriteItem:
-                {
+                case TRANSACTION_nvWriteItem: {
                     data.enforceInterface(DESCRIPTOR);
                     int _arg0;
                     _arg0 = data.readInt();
@@ -807,74 +731,66 @@ public interface ITelephony extends android.os.IInterface
                     _arg1 = data.readString();
                     boolean _result = this.nvWriteItem(_arg0, _arg1);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_nvWriteCdmaPrl:
-                {
+                case TRANSACTION_nvWriteCdmaPrl: {
                     data.enforceInterface(DESCRIPTOR);
                     byte[] _arg0;
                     _arg0 = data.createByteArray();
                     boolean _result = this.nvWriteCdmaPrl(_arg0);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_nvResetConfig:
-                {
+                case TRANSACTION_nvResetConfig: {
                     data.enforceInterface(DESCRIPTOR);
                     int _arg0;
                     _arg0 = data.readInt();
                     boolean _result = this.nvResetConfig(_arg0);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_getCalculatedPreferredNetworkType:
-                {
+                case TRANSACTION_getCalculatedPreferredNetworkType: {
                     data.enforceInterface(DESCRIPTOR);
                     int _result = this.getCalculatedPreferredNetworkType();
                     reply.writeNoException();
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getPreferredNetworkType:
-                {
+                case TRANSACTION_getPreferredNetworkType: {
                     data.enforceInterface(DESCRIPTOR);
                     int _result = this.getPreferredNetworkType();
                     reply.writeNoException();
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_setPreferredNetworkType:
-                {
+                case TRANSACTION_setPreferredNetworkType: {
                     data.enforceInterface(DESCRIPTOR);
                     int _arg0;
                     _arg0 = data.readInt();
                     boolean _result = this.setPreferredNetworkType(_arg0);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_setDataEnabled:
-                {
+                case TRANSACTION_setDataEnabled: {
                     data.enforceInterface(DESCRIPTOR);
                     boolean _arg0;
-                    _arg0 = (0!=data.readInt());
+                    _arg0 = (0 != data.readInt());
                     this.setDataEnabled(_arg0);
                     reply.writeNoException();
                     return true;
                 }
-                case TRANSACTION_getDataEnabled:
-                {
+                case TRANSACTION_getDataEnabled: {
                     data.enforceInterface(DESCRIPTOR);
                     boolean _result = this.getDataEnabled();
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_getPcscfAddress:
-                {
+                case TRANSACTION_getPcscfAddress: {
                     data.enforceInterface(DESCRIPTOR);
                     java.lang.String _arg0;
                     _arg0 = data.readString();
@@ -883,17 +799,15 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeStringArray(_result);
                     return true;
                 }
-                case TRANSACTION_setImsRegistrationState:
-                {
+                case TRANSACTION_setImsRegistrationState: {
                     data.enforceInterface(DESCRIPTOR);
                     boolean _arg0;
-                    _arg0 = (0!=data.readInt());
+                    _arg0 = (0 != data.readInt());
                     this.setImsRegistrationState(_arg0);
                     reply.writeNoException();
                     return true;
                 }
-                case TRANSACTION_getCdmaMdn:
-                {
+                case TRANSACTION_getCdmaMdn: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -902,8 +816,7 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeString(_result);
                     return true;
                 }
-                case TRANSACTION_getCdmaMin:
-                {
+                case TRANSACTION_getCdmaMin: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -912,16 +825,14 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeString(_result);
                     return true;
                 }
-                case TRANSACTION_hasCarrierPrivileges:
-                {
+                case TRANSACTION_hasCarrierPrivileges: {
                     data.enforceInterface(DESCRIPTOR);
                     int _result = this.hasCarrierPrivileges();
                     reply.writeNoException();
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_checkCarrierPrivilegesForPackage:
-                {
+                case TRANSACTION_checkCarrierPrivilegesForPackage: {
                     data.enforceInterface(DESCRIPTOR);
                     java.lang.String _arg0;
                     _arg0 = data.readString();
@@ -930,14 +841,12 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeInt(_result);
                     return true;
                 }
-                case TRANSACTION_getCarrierPackageNamesForIntent:
-                {
+                case TRANSACTION_getCarrierPackageNamesForIntent: {
                     data.enforceInterface(DESCRIPTOR);
                     android.content.Intent _arg0;
-                    if ((0!=data.readInt())) {
+                    if ((0 != data.readInt())) {
                         _arg0 = android.content.Intent.CREATOR.createFromParcel(data);
-                    }
-                    else {
+                    } else {
                         _arg0 = null;
                     }
                     java.util.List<java.lang.String> _result = this.getCarrierPackageNamesForIntent(_arg0);
@@ -945,29 +854,26 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeStringList(_result);
                     return true;
                 }
-                case TRANSACTION_enableSimplifiedNetworkSettingsForSubscriber:
-                {
+                case TRANSACTION_enableSimplifiedNetworkSettingsForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
                     boolean _arg1;
-                    _arg1 = (0!=data.readInt());
+                    _arg1 = (0 != data.readInt());
                     this.enableSimplifiedNetworkSettingsForSubscriber(_arg0, _arg1);
                     reply.writeNoException();
                     return true;
                 }
-                case TRANSACTION_getSimplifiedNetworkSettingsEnabledForSubscriber:
-                {
+                case TRANSACTION_getSimplifiedNetworkSettingsEnabledForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
                     boolean _result = this.getSimplifiedNetworkSettingsEnabledForSubscriber(_arg0);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_setLine1NumberForDisplayForSubscriber:
-                {
+                case TRANSACTION_setLine1NumberForDisplayForSubscriber: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -979,8 +885,7 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeNoException();
                     return true;
                 }
-                case TRANSACTION_getLine1NumberForDisplay:
-                {
+                case TRANSACTION_getLine1NumberForDisplay: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -989,8 +894,7 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeString(_result);
                     return true;
                 }
-                case TRANSACTION_getLine1AlphaTagForDisplay:
-                {
+                case TRANSACTION_getLine1AlphaTagForDisplay: {
                     data.enforceInterface(DESCRIPTOR);
                     long _arg0;
                     _arg0 = data.readLong();
@@ -999,27 +903,24 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeString(_result);
                     return true;
                 }
-                case TRANSACTION_setOperatorBrandOverride:
-                {
+                case TRANSACTION_setOperatorBrandOverride: {
                     data.enforceInterface(DESCRIPTOR);
                     java.lang.String _arg0;
                     _arg0 = data.readString();
                     boolean _result = this.setOperatorBrandOverride(_arg0);
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_invokeOemRilRequestRaw:
-                {
+                case TRANSACTION_invokeOemRilRequestRaw: {
                     data.enforceInterface(DESCRIPTOR);
                     byte[] _arg0;
                     _arg0 = data.createByteArray();
                     byte[] _arg1;
                     int _arg1_length = data.readInt();
-                    if ((_arg1_length<0)) {
+                    if ((_arg1_length < 0)) {
                         _arg1 = null;
-                    }
-                    else {
+                    } else {
                         _arg1 = new byte[_arg1_length];
                     }
                     int _result = this.invokeOemRilRequestRaw(_arg0, _arg1);
@@ -1028,16 +929,14 @@ public interface ITelephony extends android.os.IInterface
                     reply.writeByteArray(_arg1);
                     return true;
                 }
-                case TRANSACTION_needMobileRadioShutdown:
-                {
+                case TRANSACTION_needMobileRadioShutdown: {
                     data.enforceInterface(DESCRIPTOR);
                     boolean _result = this.needMobileRadioShutdown();
                     reply.writeNoException();
-                    reply.writeInt(((_result)?(1):(0)));
+                    reply.writeInt(((_result) ? (1) : (0)));
                     return true;
                 }
-                case TRANSACTION_shutdownMobileRadios:
-                {
+                case TRANSACTION_shutdownMobileRadios: {
                     data.enforceInterface(DESCRIPTOR);
                     this.shutdownMobileRadios();
                     reply.writeNoException();
@@ -1046,29 +945,32 @@ public interface ITelephony extends android.os.IInterface
             }
             return super.onTransact(code, data, reply, flags);
         }
-        private static class Proxy implements com.android.internal.telephony.ITelephony
-        {
+
+        private static class Proxy implements com.android.internal.telephony.ITelephony {
             private android.os.IBinder mRemote;
-            Proxy(android.os.IBinder remote)
-            {
+
+            Proxy(android.os.IBinder remote) {
                 mRemote = remote;
             }
-            @Override public android.os.IBinder asBinder()
-            {
+
+            @Override
+            public android.os.IBinder asBinder() {
                 return mRemote;
             }
-            public java.lang.String getInterfaceDescriptor()
-            {
+
+            public java.lang.String getInterfaceDescriptor() {
                 return DESCRIPTOR;
             }
+
             /**
              * Dial a number. This doesn't place the call. It displays
              * the Dialer screen.
+             *
              * @param number the number to be dialed. If null, this
-             * would display the Dialer screen with no number pre-filled.
+             *               would display the Dialer screen with no number pre-filled.
              */
-            @Override public void dial(java.lang.String number) throws android.os.RemoteException
-            {
+            @Override
+            public void dial(java.lang.String number) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 try {
@@ -1076,18 +978,19 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeString(number);
                     mRemote.transact(Stub.TRANSACTION_dial, _data, _reply, 0);
                     _reply.readException();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
             }
+
             /**
              * Place a call to the specified number.
+             *
              * @param number the number to be called.
              */
-            @Override public void call(java.lang.String callingPackage, java.lang.String number) throws android.os.RemoteException
-            {
+            @Override
+            public void call(java.lang.String callingPackage, java.lang.String number) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 try {
@@ -1096,19 +999,19 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeString(number);
                     mRemote.transact(Stub.TRANSACTION_call, _data, _reply, 0);
                     _reply.readException();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
             }
+
             /**
              * End call if there is a call in progress, otherwise does nothing.
              *
              * @return whether it hung up
              */
-            @Override public boolean endCall() throws android.os.RemoteException
-            {
+            @Override
+            public boolean endCall() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -1116,21 +1019,22 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_endCall, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * End call on particular subId or go to the Home screen
+             *
              * @param subId user preferred subId.
              * @return whether it hung up
              */
-            @Override public boolean endCallForSubscriber(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public boolean endCallForSubscriber(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -1139,74 +1043,75 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeLong(subId);
                     mRemote.transact(Stub.TRANSACTION_endCallForSubscriber, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Answer the currently-ringing call.
-             *
+             * <p/>
              * If there's already a current active call, that call will be
              * automatically put on hold.  If both lines are currently in use, the
              * current active call will be ended.
-             *
+             * <p/>
              * TODO: provide a flag to let the caller specify what policy to use
              * if both lines are in use.  (The current behavior is hardwired to
              * "answer incoming, end ongoing", which is how the CALL button
              * is specced to behave.)
-             *
+             * <p/>
              * TODO: this should be a oneway call (especially since it's called
              * directly from the key queue thread).
              */
-            @Override public void answerRingingCall() throws android.os.RemoteException
-            {
+            @Override
+            public void answerRingingCall() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 try {
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_answerRingingCall, _data, _reply, 0);
                     _reply.readException();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
             }
+
             /**
              * Silence the ringer if an incoming call is currently ringing.
              * (If vibrating, stop the vibrator also.)
-             *
+             * <p/>
              * It's safe to call this if the ringer has already been silenced, or
              * even if there's no incoming call.  (If so, this method will do nothing.)
-             *
+             * <p/>
              * TODO: this should be a oneway call too (see above).
-             *       (Actually *all* the methods here that return void can
-             *       probably be oneway.)
+             * (Actually *all* the methods here that return void can
+             * probably be oneway.)
              */
-            @Override public void silenceRinger() throws android.os.RemoteException
-            {
+            @Override
+            public void silenceRinger() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 try {
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_silenceRinger, _data, _reply, 0);
                     _reply.readException();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
             }
+
             /**
              * Check if we are in either an active or holding call
+             *
              * @return true if the phone state is OFFHOOK.
              */
-            @Override public boolean isOffhook() throws android.os.RemoteException
-            {
+            @Override
+            public boolean isOffhook() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -1214,22 +1119,22 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_isOffhook, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Check if a particular subId has an active or holding call
              *
              * @param subId user preferred subId.
              * @return true if the phone state is OFFHOOK.
              */
-            @Override public boolean isOffhookForSubscriber(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public boolean isOffhookForSubscriber(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -1238,14 +1143,14 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeLong(subId);
                     mRemote.transact(Stub.TRANSACTION_isOffhookForSubscriber, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Check if an incoming phone call is ringing or call waiting
              * on a particular subId.
@@ -1253,8 +1158,8 @@ public interface ITelephony extends android.os.IInterface
              * @param subId user preferred subId.
              * @return true if the phone state is RINGING.
              */
-            @Override public boolean isRingingForSubscriber(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public boolean isRingingForSubscriber(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -1263,20 +1168,21 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeLong(subId);
                     mRemote.transact(Stub.TRANSACTION_isRingingForSubscriber, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Check if an incoming phone call is ringing or call waiting.
+             *
              * @return true if the phone state is RINGING.
              */
-            @Override public boolean isRinging() throws android.os.RemoteException
-            {
+            @Override
+            public boolean isRinging() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -1284,20 +1190,21 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_isRinging, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Check if the phone is idle.
+             *
              * @return true if the phone state is IDLE.
              */
-            @Override public boolean isIdle() throws android.os.RemoteException
-            {
+            @Override
+            public boolean isIdle() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -1305,22 +1212,22 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_isIdle, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Check if the phone is idle on a particular subId.
              *
              * @param subId user preferred subId.
              * @return true if the phone state is IDLE.
              */
-            @Override public boolean isIdleForSubscriber(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public boolean isIdleForSubscriber(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -1329,20 +1236,21 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeLong(subId);
                     mRemote.transact(Stub.TRANSACTION_isIdleForSubscriber, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Check to see if the radio is on or not.
+             *
              * @return returns true if the radio is on.
              */
-            @Override public boolean isRadioOn() throws android.os.RemoteException
-            {
+            @Override
+            public boolean isRadioOn() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -1350,21 +1258,22 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_isRadioOn, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Check to see if the radio is on or not on particular subId.
+             *
              * @param subId user preferred subId.
              * @return returns true if the radio is on.
              */
-            @Override public boolean isRadioOnForSubscriber(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public boolean isRadioOnForSubscriber(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -1373,20 +1282,21 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeLong(subId);
                     mRemote.transact(Stub.TRANSACTION_isRadioOnForSubscriber, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Check if the SIM pin lock is enabled.
+             *
              * @return true if the SIM pin lock is enabled.
              */
-            @Override public boolean isSimPinEnabled() throws android.os.RemoteException
-            {
+            @Override
+            public boolean isSimPinEnabled() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -1394,21 +1304,22 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_isSimPinEnabled, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Supply a pin to unlock the SIM.  Blocks until a result is determined.
+             *
              * @param pin The pin to check.
              * @return whether the operation was a success.
              */
-            @Override public boolean supplyPin(java.lang.String pin) throws android.os.RemoteException
-            {
+            @Override
+            public boolean supplyPin(java.lang.String pin) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -1417,23 +1328,24 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeString(pin);
                     mRemote.transact(Stub.TRANSACTION_supplyPin, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Supply a pin to unlock the SIM for particular subId.
              * Blocks until a result is determined.
-             * @param pin The pin to check.
+             *
+             * @param pin   The pin to check.
              * @param subId user preferred subId.
              * @return whether the operation was a success.
              */
-            @Override public boolean supplyPinForSubscriber(long subId, java.lang.String pin) throws android.os.RemoteException
-            {
+            @Override
+            public boolean supplyPinForSubscriber(long subId, java.lang.String pin) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -1443,23 +1355,24 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeString(pin);
                     mRemote.transact(Stub.TRANSACTION_supplyPinForSubscriber, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Supply puk to unlock the SIM and set SIM pin to new pin.
-             *  Blocks until a result is determined.
+             * Blocks until a result is determined.
+             *
              * @param puk The puk to check.
-             *        pin The new pin to be set in SIM
+             *            pin The new pin to be set in SIM
              * @return whether the operation was a success.
              */
-            @Override public boolean supplyPuk(java.lang.String puk, java.lang.String pin) throws android.os.RemoteException
-            {
+            @Override
+            public boolean supplyPuk(java.lang.String puk, java.lang.String pin) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -1469,24 +1382,25 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeString(pin);
                     mRemote.transact(Stub.TRANSACTION_supplyPuk, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Supply puk to unlock the SIM and set SIM pin to new pin.
-             *  Blocks until a result is determined.
-             * @param puk The puk to check.
-             *        pin The new pin to be set in SIM
+             * Blocks until a result is determined.
+             *
+             * @param puk   The puk to check.
+             *              pin The new pin to be set in SIM
              * @param subId user preferred subId.
              * @return whether the operation was a success.
              */
-            @Override public boolean supplyPukForSubscriber(long subId, java.lang.String puk, java.lang.String pin) throws android.os.RemoteException
-            {
+            @Override
+            public boolean supplyPukForSubscriber(long subId, java.lang.String puk, java.lang.String pin) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -1497,23 +1411,24 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeString(pin);
                     mRemote.transact(Stub.TRANSACTION_supplyPukForSubscriber, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Supply a pin to unlock the SIM.  Blocks until a result is determined.
              * Returns a specific success/error code.
+             *
              * @param pin The pin to check.
              * @return retValue[0] = Phone.PIN_RESULT_SUCCESS on success. Otherwise error code
-             *         retValue[1] = number of attempts remaining if known otherwise -1
+             * retValue[1] = number of attempts remaining if known otherwise -1
              */
-            @Override public int[] supplyPinReportResult(java.lang.String pin) throws android.os.RemoteException
-            {
+            @Override
+            public int[] supplyPinReportResult(java.lang.String pin) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int[] _result;
@@ -1523,22 +1438,23 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_supplyPinReportResult, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.createIntArray();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Supply a pin to unlock the SIM.  Blocks until a result is determined.
              * Returns a specific success/error code.
+             *
              * @param pin The pin to check.
              * @return retValue[0] = Phone.PIN_RESULT_SUCCESS on success. Otherwise error code
-             *         retValue[1] = number of attempts remaining if known otherwise -1
+             * retValue[1] = number of attempts remaining if known otherwise -1
              */
-            @Override public int[] supplyPinReportResultForSubscriber(long subId, java.lang.String pin) throws android.os.RemoteException
-            {
+            @Override
+            public int[] supplyPinReportResultForSubscriber(long subId, java.lang.String pin) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int[] _result;
@@ -1549,24 +1465,25 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_supplyPinReportResultForSubscriber, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.createIntArray();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Supply puk to unlock the SIM and set SIM pin to new pin.
              * Blocks until a result is determined.
              * Returns a specific success/error code
+             *
              * @param puk The puk to check
-             *        pin The pin to check.
+             *            pin The pin to check.
              * @return retValue[0] = Phone.PIN_RESULT_SUCCESS on success. Otherwise error code
-             *         retValue[1] = number of attempts remaining if known otherwise -1
+             * retValue[1] = number of attempts remaining if known otherwise -1
              */
-            @Override public int[] supplyPukReportResult(java.lang.String puk, java.lang.String pin) throws android.os.RemoteException
-            {
+            @Override
+            public int[] supplyPukReportResult(java.lang.String puk, java.lang.String pin) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int[] _result;
@@ -1577,24 +1494,25 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_supplyPukReportResult, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.createIntArray();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Supply puk to unlock the SIM and set SIM pin to new pin.
              * Blocks until a result is determined.
              * Returns a specific success/error code
+             *
              * @param puk The puk to check
-             *        pin The pin to check.
+             *            pin The pin to check.
              * @return retValue[0] = Phone.PIN_RESULT_SUCCESS on success. Otherwise error code
-             *         retValue[1] = number of attempts remaining if known otherwise -1
+             * retValue[1] = number of attempts remaining if known otherwise -1
              */
-            @Override public int[] supplyPukReportResultForSubscriber(long subId, java.lang.String puk, java.lang.String pin) throws android.os.RemoteException
-            {
+            @Override
+            public int[] supplyPukReportResultForSubscriber(long subId, java.lang.String puk, java.lang.String pin) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int[] _result;
@@ -1606,13 +1524,13 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_supplyPukReportResultForSubscriber, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.createIntArray();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Handles PIN MMI commands (PIN/PIN2/PUK/PUK2), which are initiated
              * without SEND (so <code>dial</code> is not appropriate).
@@ -1620,8 +1538,8 @@ public interface ITelephony extends android.os.IInterface
              * @param dialString the MMI command to be executed.
              * @return true if MMI command is executed.
              */
-            @Override public boolean handlePinMmi(java.lang.String dialString) throws android.os.RemoteException
-            {
+            @Override
+            public boolean handlePinMmi(java.lang.String dialString) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -1630,24 +1548,25 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeString(dialString);
                     mRemote.transact(Stub.TRANSACTION_handlePinMmi, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Handles PIN MMI commands (PIN/PIN2/PUK/PUK2), which are initiated
              * without SEND (so <code>dial</code> is not appropriate) for
              * a particular subId.
+             *
              * @param dialString the MMI command to be executed.
-             * @param subId user preferred subId.
+             * @param subId      user preferred subId.
              * @return true if MMI command is executed.
              */
-            @Override public boolean handlePinMmiForSubscriber(long subId, java.lang.String dialString) throws android.os.RemoteException
-            {
+            @Override
+            public boolean handlePinMmiForSubscriber(long subId, java.lang.String dialString) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -1657,37 +1576,38 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeString(dialString);
                     mRemote.transact(Stub.TRANSACTION_handlePinMmiForSubscriber, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Toggles the radio on or off.
              */
-            @Override public void toggleRadioOnOff() throws android.os.RemoteException
-            {
+            @Override
+            public void toggleRadioOnOff() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 try {
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_toggleRadioOnOff, _data, _reply, 0);
                     _reply.readException();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
             }
+
             /**
              * Toggles the radio on or off on particular subId.
+             *
              * @param subId user preferred subId.
              */
-            @Override public void toggleRadioOnOffForSubscriber(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public void toggleRadioOnOffForSubscriber(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 try {
@@ -1695,100 +1615,102 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeLong(subId);
                     mRemote.transact(Stub.TRANSACTION_toggleRadioOnOffForSubscriber, _data, _reply, 0);
                     _reply.readException();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
             }
+
             /**
              * Set the radio to on or off
              */
-            @Override public boolean setRadio(boolean turnOn) throws android.os.RemoteException
-            {
+            @Override
+            public boolean setRadio(boolean turnOn) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
                 try {
                     _data.writeInterfaceToken(DESCRIPTOR);
-                    _data.writeInt(((turnOn)?(1):(0)));
+                    _data.writeInt(((turnOn) ? (1) : (0)));
                     mRemote.transact(Stub.TRANSACTION_setRadio, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Set the radio to on or off on particular subId.
+             *
              * @param subId user preferred subId.
              */
-            @Override public boolean setRadioForSubscriber(long subId, boolean turnOn) throws android.os.RemoteException
-            {
+            @Override
+            public boolean setRadioForSubscriber(long subId, boolean turnOn) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
                 try {
                     _data.writeInterfaceToken(DESCRIPTOR);
                     _data.writeLong(subId);
-                    _data.writeInt(((turnOn)?(1):(0)));
+                    _data.writeInt(((turnOn) ? (1) : (0)));
                     mRemote.transact(Stub.TRANSACTION_setRadioForSubscriber, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Set the radio to on or off unconditionally
              */
-            @Override public boolean setRadioPower(boolean turnOn) throws android.os.RemoteException
-            {
+            @Override
+            public boolean setRadioPower(boolean turnOn) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
                 try {
                     _data.writeInterfaceToken(DESCRIPTOR);
-                    _data.writeInt(((turnOn)?(1):(0)));
+                    _data.writeInt(((turnOn) ? (1) : (0)));
                     mRemote.transact(Stub.TRANSACTION_setRadioPower, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Request to update location information in service state
              */
-            @Override public void updateServiceLocation() throws android.os.RemoteException
-            {
+            @Override
+            public void updateServiceLocation() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 try {
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_updateServiceLocation, _data, _reply, 0);
                     _reply.readException();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
             }
+
             /**
              * Request to update location information for a subscrition in service state
+             *
              * @param subId user preferred subId.
              */
-            @Override public void updateServiceLocationForSubscriber(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public void updateServiceLocationForSubscriber(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 try {
@@ -1796,35 +1718,36 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeLong(subId);
                     mRemote.transact(Stub.TRANSACTION_updateServiceLocationForSubscriber, _data, _reply, 0);
                     _reply.readException();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
             }
+
             /**
              * Enable location update notifications.
              */
-            @Override public void enableLocationUpdates() throws android.os.RemoteException
-            {
+            @Override
+            public void enableLocationUpdates() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 try {
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_enableLocationUpdates, _data, _reply, 0);
                     _reply.readException();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
             }
+
             /**
              * Enable location update notifications.
+             *
              * @param subId user preferred subId.
              */
-            @Override public void enableLocationUpdatesForSubscriber(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public void enableLocationUpdatesForSubscriber(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 try {
@@ -1832,35 +1755,36 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeLong(subId);
                     mRemote.transact(Stub.TRANSACTION_enableLocationUpdatesForSubscriber, _data, _reply, 0);
                     _reply.readException();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
             }
+
             /**
              * Disable location update notifications.
              */
-            @Override public void disableLocationUpdates() throws android.os.RemoteException
-            {
+            @Override
+            public void disableLocationUpdates() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 try {
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_disableLocationUpdates, _data, _reply, 0);
                     _reply.readException();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
             }
+
             /**
              * Disable location update notifications.
+             *
              * @param subId user preferred subId.
              */
-            @Override public void disableLocationUpdatesForSubscriber(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public void disableLocationUpdatesForSubscriber(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 try {
@@ -1868,17 +1792,17 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeLong(subId);
                     mRemote.transact(Stub.TRANSACTION_disableLocationUpdatesForSubscriber, _data, _reply, 0);
                     _reply.readException();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
             }
+
             /**
              * Allow mobile data connections.
              */
-            @Override public boolean enableDataConnectivity() throws android.os.RemoteException
-            {
+            @Override
+            public boolean enableDataConnectivity() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -1886,19 +1810,19 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_enableDataConnectivity, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Disallow mobile data connections.
              */
-            @Override public boolean disableDataConnectivity() throws android.os.RemoteException
-            {
+            @Override
+            public boolean disableDataConnectivity() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -1906,19 +1830,19 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_disableDataConnectivity, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Report whether data connectivity is possible.
              */
-            @Override public boolean isDataConnectivityPossible() throws android.os.RemoteException
-            {
+            @Override
+            public boolean isDataConnectivityPossible() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -1926,16 +1850,16 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_isDataConnectivityPossible, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
-            @Override public android.os.Bundle getCellLocation() throws android.os.RemoteException
-            {
+
+            @Override
+            public android.os.Bundle getCellLocation() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 android.os.Bundle _result;
@@ -1943,24 +1867,23 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_getCellLocation, _data, _reply, 0);
                     _reply.readException();
-                    if ((0!=_reply.readInt())) {
+                    if ((0 != _reply.readInt())) {
                         _result = android.os.Bundle.CREATOR.createFromParcel(_reply);
-                    }
-                    else {
+                    } else {
                         _result = null;
                     }
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the neighboring cell information of the device.
              */
-            @Override public java.util.List<android.telephony.NeighboringCellInfo> getNeighboringCellInfo(java.lang.String callingPkg) throws android.os.RemoteException
-            {
+            @Override
+            public java.util.List<android.telephony.NeighboringCellInfo> getNeighboringCellInfo(java.lang.String callingPkg) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 java.util.List<android.telephony.NeighboringCellInfo> _result;
@@ -1970,15 +1893,15 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getNeighboringCellInfo, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.createTypedArrayList(android.telephony.NeighboringCellInfo.CREATOR);
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
-            @Override public int getCallState() throws android.os.RemoteException
-            {
+
+            @Override
+            public int getCallState() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -1987,18 +1910,18 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getCallState, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the call state for a subId.
              */
-            @Override public int getCallStateForSubscriber(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public int getCallStateForSubscriber(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2008,15 +1931,15 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getCallStateForSubscriber, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
-            @Override public int getDataActivity() throws android.os.RemoteException
-            {
+
+            @Override
+            public int getDataActivity() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2025,15 +1948,15 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getDataActivity, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
-            @Override public int getDataState() throws android.os.RemoteException
-            {
+
+            @Override
+            public int getDataState() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2042,20 +1965,20 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getDataState, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the current active phone type as integer.
              * Returns TelephonyManager.PHONE_TYPE_CDMA if RILConstants.CDMA_PHONE
              * and TelephonyManager.PHONE_TYPE_GSM if RILConstants.GSM_PHONE
              */
-            @Override public int getActivePhoneType() throws android.os.RemoteException
-            {
+            @Override
+            public int getActivePhoneType() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2064,21 +1987,22 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getActivePhoneType, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the current active phone type as integer for particular subId.
              * Returns TelephonyManager.PHONE_TYPE_CDMA if RILConstants.CDMA_PHONE
              * and TelephonyManager.PHONE_TYPE_GSM if RILConstants.GSM_PHONE
+             *
              * @param subId user preferred subId.
              */
-            @Override public int getActivePhoneTypeForSubscriber(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public int getActivePhoneTypeForSubscriber(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2088,18 +2012,18 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getActivePhoneTypeForSubscriber, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the CDMA ERI icon index to display
              */
-            @Override public int getCdmaEriIconIndex() throws android.os.RemoteException
-            {
+            @Override
+            public int getCdmaEriIconIndex() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2108,19 +2032,20 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getCdmaEriIconIndex, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the CDMA ERI icon index to display on particular subId.
+             *
              * @param subId user preferred subId.
              */
-            @Override public int getCdmaEriIconIndexForSubscriber(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public int getCdmaEriIconIndexForSubscriber(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2130,20 +2055,20 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getCdmaEriIconIndexForSubscriber, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the CDMA ERI icon mode,
              * 0 - ON
              * 1 - FLASHING
              */
-            @Override public int getCdmaEriIconMode() throws android.os.RemoteException
-            {
+            @Override
+            public int getCdmaEriIconMode() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2152,21 +2077,22 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getCdmaEriIconMode, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the CDMA ERI icon mode on particular subId,
              * 0 - ON
              * 1 - FLASHING
+             *
              * @param subId user preferred subId.
              */
-            @Override public int getCdmaEriIconModeForSubscriber(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public int getCdmaEriIconModeForSubscriber(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2176,18 +2102,18 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getCdmaEriIconModeForSubscriber, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the CDMA ERI text,
              */
-            @Override public java.lang.String getCdmaEriText() throws android.os.RemoteException
-            {
+            @Override
+            public java.lang.String getCdmaEriText() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 java.lang.String _result;
@@ -2196,19 +2122,20 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getCdmaEriText, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readString();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the CDMA ERI text for particular subId,
+             *
              * @param subId user preferred subId.
              */
-            @Override public java.lang.String getCdmaEriTextForSubscriber(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public java.lang.String getCdmaEriTextForSubscriber(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 java.lang.String _result;
@@ -2218,20 +2145,20 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getCdmaEriTextForSubscriber, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readString();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns true if OTA service provisioning needs to run.
              * Only relevant on some technologies, others will always
              * return false.
              */
-            @Override public boolean needsOtaServiceProvisioning() throws android.os.RemoteException
-            {
+            @Override
+            public boolean needsOtaServiceProvisioning() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -2239,19 +2166,19 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_needsOtaServiceProvisioning, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the unread count of voicemails
              */
-            @Override public int getVoiceMessageCount() throws android.os.RemoteException
-            {
+            @Override
+            public int getVoiceMessageCount() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2260,20 +2187,21 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getVoiceMessageCount, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the unread count of voicemails for a subId.
+             *
              * @param subId user preferred subId.
-             * Returns the unread count of voicemails
+             *              Returns the unread count of voicemails
              */
-            @Override public int getVoiceMessageCountForSubscriber(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public int getVoiceMessageCountForSubscriber(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2283,18 +2211,18 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getVoiceMessageCountForSubscriber, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the network type for data transmission
              */
-            @Override public int getNetworkType() throws android.os.RemoteException
-            {
+            @Override
+            public int getNetworkType() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2303,20 +2231,21 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getNetworkType, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the network type of a subId.
+             *
              * @param subId user preferred subId.
-             * Returns the network type
+             *              Returns the network type
              */
-            @Override public int getNetworkTypeForSubscriber(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public int getNetworkTypeForSubscriber(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2326,18 +2255,18 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getNetworkTypeForSubscriber, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the network type for data transmission
              */
-            @Override public int getDataNetworkType() throws android.os.RemoteException
-            {
+            @Override
+            public int getDataNetworkType() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2346,20 +2275,21 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getDataNetworkType, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the data network type of a subId
+             *
              * @param subId user preferred subId.
-             * Returns the network type
+             *              Returns the network type
              */
-            @Override public int getDataNetworkTypeForSubscriber(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public int getDataNetworkTypeForSubscriber(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2369,18 +2299,18 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getDataNetworkTypeForSubscriber, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the network type for voice
              */
-            @Override public int getVoiceNetworkType() throws android.os.RemoteException
-            {
+            @Override
+            public int getVoiceNetworkType() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2389,20 +2319,21 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getVoiceNetworkType, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the voice network type of a subId
+             *
              * @param subId user preferred subId.
-             * Returns the network type
+             *              Returns the network type
              */
-            @Override public int getVoiceNetworkTypeForSubscriber(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public int getVoiceNetworkTypeForSubscriber(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2412,18 +2343,18 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getVoiceNetworkTypeForSubscriber, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Return true if an ICC card is present
              */
-            @Override public boolean hasIccCard() throws android.os.RemoteException
-            {
+            @Override
+            public boolean hasIccCard() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -2431,21 +2362,22 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_hasIccCard, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Return true if an ICC card is present for a subId.
+             *
              * @param slotId user preferred slotId.
-             * Return true if an ICC card is present
+             *               Return true if an ICC card is present
              */
-            @Override public boolean hasIccCardUsingSlotId(long slotId) throws android.os.RemoteException
-            {
+            @Override
+            public boolean hasIccCardUsingSlotId(long slotId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -2454,14 +2386,14 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeLong(slotId);
                     mRemote.transact(Stub.TRANSACTION_hasIccCardUsingSlotId, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Return if the current radio is LTE on CDMA. This
              * is a tri-state return value as for a period of time
@@ -2470,8 +2402,8 @@ public interface ITelephony extends android.os.IInterface
              * @return {@link Phone#LTE_ON_CDMA_UNKNOWN}, {@link Phone#LTE_ON_CDMA_FALSE}
              * or {@link PHone#LTE_ON_CDMA_TRUE}
              */
-            @Override public int getLteOnCdmaMode() throws android.os.RemoteException
-            {
+            @Override
+            public int getLteOnCdmaMode() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2480,13 +2412,13 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getLteOnCdmaMode, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Return if the current radio is LTE on CDMA. This
              * is a tri-state return value as for a period of time
@@ -2495,8 +2427,8 @@ public interface ITelephony extends android.os.IInterface
              * @return {@link Phone#LTE_ON_CDMA_UNKNOWN}, {@link Phone#LTE_ON_CDMA_FALSE}
              * or {@link PHone#LTE_ON_CDMA_TRUE}
              */
-            @Override public int getLteOnCdmaModeForSubscriber(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public int getLteOnCdmaModeForSubscriber(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2506,18 +2438,18 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getLteOnCdmaModeForSubscriber, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the all observed cell information of the device.
              */
-            @Override public java.util.List<android.telephony.CellInfo> getAllCellInfo() throws android.os.RemoteException
-            {
+            @Override
+            public java.util.List<android.telephony.CellInfo> getAllCellInfo() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 java.util.List<android.telephony.CellInfo> _result;
@@ -2526,18 +2458,18 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getAllCellInfo, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.createTypedArrayList(android.telephony.CellInfo.CREATOR);
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Sets minimum time in milli-seconds between onCellInfoChanged
              */
-            @Override public void setCellInfoListRate(int rateInMillis) throws android.os.RemoteException
-            {
+            @Override
+            public void setCellInfoListRate(int rateInMillis) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 try {
@@ -2545,18 +2477,19 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeInt(rateInMillis);
                     mRemote.transact(Stub.TRANSACTION_setCellInfoListRate, _data, _reply, 0);
                     _reply.readException();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
             }
+
             /**
              * get default sim
+             *
              * @return sim id
              */
-            @Override public int getDefaultSim() throws android.os.RemoteException
-            {
+            @Override
+            public int getDefaultSim() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2565,23 +2498,23 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getDefaultSim, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Opens a logical channel to the ICC card.
-             *
+             * <p/>
              * Input parameters equivalent to TS 27.007 AT+CCHO command.
              *
              * @param AID Application id. See ETSI 102.221 and 101.220.
              * @return an IccOpenLogicalChannelResponse object.
              */
-            @Override public android.telephony.IccOpenLogicalChannelResponse iccOpenLogicalChannel(java.lang.String AID) throws android.os.RemoteException
-            {
+            @Override
+            public android.telephony.IccOpenLogicalChannelResponse iccOpenLogicalChannel(java.lang.String AID) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 android.telephony.IccOpenLogicalChannelResponse _result;
@@ -2590,30 +2523,29 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeString(AID);
                     mRemote.transact(Stub.TRANSACTION_iccOpenLogicalChannel, _data, _reply, 0);
                     _reply.readException();
-                    if ((0!=_reply.readInt())) {
+                    if ((0 != _reply.readInt())) {
                         _result = android.telephony.IccOpenLogicalChannelResponse.CREATOR.createFromParcel(_reply);
-                    }
-                    else {
+                    } else {
                         _result = null;
                     }
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Closes a previously opened logical channel to the ICC card.
-             *
+             * <p/>
              * Input parameters equivalent to TS 27.007 AT+CCHC command.
              *
              * @param channel is the channel id to be closed as retruned by a
-             *            successful iccOpenLogicalChannel.
+             *                successful iccOpenLogicalChannel.
              * @return true if the channel was closed successfully.
              */
-            @Override public boolean iccCloseLogicalChannel(int channel) throws android.os.RemoteException
-            {
+            @Override
+            public boolean iccCloseLogicalChannel(int channel) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -2622,33 +2554,33 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeInt(channel);
                     mRemote.transact(Stub.TRANSACTION_iccCloseLogicalChannel, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Transmit an APDU to the ICC card over a logical channel.
-             *
+             * <p/>
              * Input parameters equivalent to TS 27.007 AT+CGLA command.
              *
-             * @param channel is the channel id to be closed as retruned by a
-             *            successful iccOpenLogicalChannel.
-             * @param cla Class of the APDU command.
+             * @param channel     is the channel id to be closed as retruned by a
+             *                    successful iccOpenLogicalChannel.
+             * @param cla         Class of the APDU command.
              * @param instruction Instruction of the APDU command.
-             * @param p1 P1 value of the APDU command.
-             * @param p2 P2 value of the APDU command.
-             * @param p3 P3 value of the APDU command. If p3 is negative a 4 byte APDU
-             *            is sent to the SIM.
-             * @param data Data to be sent with the APDU.
+             * @param p1          P1 value of the APDU command.
+             * @param p2          P2 value of the APDU command.
+             * @param p3          P3 value of the APDU command. If p3 is negative a 4 byte APDU
+             *                    is sent to the SIM.
+             * @param data        Data to be sent with the APDU.
              * @return The APDU response from the ICC card with the status appended at
-             *            the end.
+             * the end.
              */
-            @Override public java.lang.String iccTransmitApduLogicalChannel(int channel, int cla, int instruction, int p1, int p2, int p3, java.lang.String data) throws android.os.RemoteException
-            {
+            @Override
+            public java.lang.String iccTransmitApduLogicalChannel(int channel, int cla, int instruction, int p1, int p2, int p3, java.lang.String data) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 java.lang.String _result;
@@ -2664,30 +2596,30 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_iccTransmitApduLogicalChannel, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readString();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Transmit an APDU to the ICC card over the basic channel.
-             *
+             * <p/>
              * Input parameters equivalent to TS 27.007 AT+CSIM command.
              *
-             * @param cla Class of the APDU command.
+             * @param cla         Class of the APDU command.
              * @param instruction Instruction of the APDU command.
-             * @param p1 P1 value of the APDU command.
-             * @param p2 P2 value of the APDU command.
-             * @param p3 P3 value of the APDU command. If p3 is negative a 4 byte APDU
-             *            is sent to the SIM.
-             * @param data Data to be sent with the APDU.
+             * @param p1          P1 value of the APDU command.
+             * @param p2          P2 value of the APDU command.
+             * @param p3          P3 value of the APDU command. If p3 is negative a 4 byte APDU
+             *                    is sent to the SIM.
+             * @param data        Data to be sent with the APDU.
              * @return The APDU response from the ICC card with the status appended at
-             *            the end.
+             * the end.
              */
-            @Override public java.lang.String iccTransmitApduBasicChannel(int cla, int instruction, int p1, int p2, int p3, java.lang.String data) throws android.os.RemoteException
-            {
+            @Override
+            public java.lang.String iccTransmitApduBasicChannel(int cla, int instruction, int p1, int p2, int p3, java.lang.String data) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 java.lang.String _result;
@@ -2702,26 +2634,26 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_iccTransmitApduBasicChannel, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readString();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the response APDU for a command APDU sent through SIM_IO.
              *
              * @param fileID
              * @param command
-             * @param p1 P1 value of the APDU command.
-             * @param p2 P2 value of the APDU command.
-             * @param p3 P3 value of the APDU command.
+             * @param p1       P1 value of the APDU command.
+             * @param p2       P2 value of the APDU command.
+             * @param p3       P3 value of the APDU command.
              * @param filePath
              * @return The APDU response.
              */
-            @Override public byte[] iccExchangeSimIO(int fileID, int command, int p1, int p2, int p3, java.lang.String filePath) throws android.os.RemoteException
-            {
+            @Override
+            public byte[] iccExchangeSimIO(int fileID, int command, int p1, int p2, int p3, java.lang.String filePath) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 byte[] _result;
@@ -2736,25 +2668,25 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_iccExchangeSimIO, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.createByteArray();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Send ENVELOPE to the SIM and returns the response.
              *
-             * @param contents  String containing SAT/USAT response in hexadecimal
-             *                  format starting with command tag. See TS 102 223 for
-             *                  details.
+             * @param contents String containing SAT/USAT response in hexadecimal
+             *                 format starting with command tag. See TS 102 223 for
+             *                 details.
              * @return The APDU response from the ICC card, with the last 4 bytes
-             *         being the status word. If the command fails, returns an empty
-             *         string.
+             * being the status word. If the command fails, returns an empty
+             * string.
              */
-            @Override public java.lang.String sendEnvelopeWithStatus(java.lang.String content) throws android.os.RemoteException
-            {
+            @Override
+            public java.lang.String sendEnvelopeWithStatus(java.lang.String content) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 java.lang.String _result;
@@ -2764,13 +2696,13 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_sendEnvelopeWithStatus, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readString();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Read one of the NV items defined in {@link RadioNVItems} / {@code ril_nv_items.h}.
              * Used for device configuration by some CDMA operators.
@@ -2778,8 +2710,8 @@ public interface ITelephony extends android.os.IInterface
              * @param itemID the ID of the item to read.
              * @return the NV item as a String, or null on any failure.
              */
-            @Override public java.lang.String nvReadItem(int itemID) throws android.os.RemoteException
-            {
+            @Override
+            public java.lang.String nvReadItem(int itemID) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 java.lang.String _result;
@@ -2789,23 +2721,23 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_nvReadItem, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readString();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Write one of the NV items defined in {@link RadioNVItems} / {@code ril_nv_items.h}.
              * Used for device configuration by some CDMA operators.
              *
-             * @param itemID the ID of the item to read.
+             * @param itemID    the ID of the item to read.
              * @param itemValue the value to write, as a String.
              * @return true on success; false on any failure.
              */
-            @Override public boolean nvWriteItem(int itemID, java.lang.String itemValue) throws android.os.RemoteException
-            {
+            @Override
+            public boolean nvWriteItem(int itemID, java.lang.String itemValue) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -2815,14 +2747,14 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeString(itemValue);
                     mRemote.transact(Stub.TRANSACTION_nvWriteItem, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Update the CDMA Preferred Roaming List (PRL) in the radio NV storage.
              * Used for device configuration by some CDMA operators.
@@ -2830,8 +2762,8 @@ public interface ITelephony extends android.os.IInterface
              * @param preferredRoamingList byte array containing the new PRL.
              * @return true on success; false on any failure.
              */
-            @Override public boolean nvWriteCdmaPrl(byte[] preferredRoamingList) throws android.os.RemoteException
-            {
+            @Override
+            public boolean nvWriteCdmaPrl(byte[] preferredRoamingList) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -2840,14 +2772,14 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeByteArray(preferredRoamingList);
                     mRemote.transact(Stub.TRANSACTION_nvWriteCdmaPrl, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Perform the specified type of NV config reset. The radio will be taken offline
              * and the device must be rebooted after the operation. Used for device
@@ -2856,8 +2788,8 @@ public interface ITelephony extends android.os.IInterface
              * @param resetType the type of reset to perform (1 == factory reset; 2 == NV-only reset).
              * @return true on success; false on any failure.
              */
-            @Override public boolean nvResetConfig(int resetType) throws android.os.RemoteException
-            {
+            @Override
+            public boolean nvResetConfig(int resetType) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -2866,22 +2798,22 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeInt(resetType);
                     mRemote.transact(Stub.TRANSACTION_nvResetConfig, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /*
      * Get the calculated preferred network type.
      * Used for device configuration by some CDMA operators.
      *
      * @return the calculated preferred network type, defined in RILConstants.java.
      */
-            @Override public int getCalculatedPreferredNetworkType() throws android.os.RemoteException
-            {
+            @Override
+            public int getCalculatedPreferredNetworkType() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2890,21 +2822,21 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getCalculatedPreferredNetworkType, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /*
      * Get the preferred network type.
      * Used for device configuration by some CDMA operators.
      *
      * @return the preferred network type, defined in RILConstants.java.
      */
-            @Override public int getPreferredNetworkType() throws android.os.RemoteException
-            {
+            @Override
+            public int getPreferredNetworkType() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -2913,13 +2845,13 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getPreferredNetworkType, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Set the preferred network type.
              * Used for device configuration by some CDMA operators.
@@ -2927,8 +2859,8 @@ public interface ITelephony extends android.os.IInterface
              * @param networkType the preferred network type, defined in RILConstants.java.
              * @return true on success; false on any failure.
              */
-            @Override public boolean setPreferredNetworkType(int networkType) throws android.os.RemoteException
-            {
+            @Override
+            public boolean setPreferredNetworkType(int networkType) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -2937,41 +2869,41 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeInt(networkType);
                     mRemote.transact(Stub.TRANSACTION_setPreferredNetworkType, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * User enable/disable Mobile Data.
              *
              * @param enable true to turn on, else false
              */
-            @Override public void setDataEnabled(boolean enable) throws android.os.RemoteException
-            {
+            @Override
+            public void setDataEnabled(boolean enable) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 try {
                     _data.writeInterfaceToken(DESCRIPTOR);
-                    _data.writeInt(((enable)?(1):(0)));
+                    _data.writeInt(((enable) ? (1) : (0)));
                     mRemote.transact(Stub.TRANSACTION_setDataEnabled, _data, _reply, 0);
                     _reply.readException();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
             }
+
             /**
              * Get the user enabled state of Mobile Data.
              *
              * @return true on enabled
              */
-            @Override public boolean getDataEnabled() throws android.os.RemoteException
-            {
+            @Override
+            public boolean getDataEnabled() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -2979,20 +2911,21 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_getDataEnabled, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Get P-CSCF address from PCO after data connection is established or modified.
+             *
              * @param apnType the apnType, "ims" for IMS APN, "emergency" for EMERGENCY APN
              */
-            @Override public java.lang.String[] getPcscfAddress(java.lang.String apnType) throws android.os.RemoteException
-            {
+            @Override
+            public java.lang.String[] getPcscfAddress(java.lang.String apnType) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 java.lang.String[] _result;
@@ -3002,37 +2935,38 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getPcscfAddress, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.createStringArray();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Set IMS registration state
              */
-            @Override public void setImsRegistrationState(boolean registered) throws android.os.RemoteException
-            {
+            @Override
+            public void setImsRegistrationState(boolean registered) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 try {
                     _data.writeInterfaceToken(DESCRIPTOR);
-                    _data.writeInt(((registered)?(1):(0)));
+                    _data.writeInt(((registered) ? (1) : (0)));
                     mRemote.transact(Stub.TRANSACTION_setImsRegistrationState, _data, _reply, 0);
                     _reply.readException();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
             }
+
             /**
              * Return MDN string for CDMA phone.
+             *
              * @param subId user preferred subId.
              */
-            @Override public java.lang.String getCdmaMdn(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public java.lang.String getCdmaMdn(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 java.lang.String _result;
@@ -3042,19 +2976,20 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getCdmaMdn, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readString();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Return MIN string for CDMA phone.
+             *
              * @param subId user preferred subId.
              */
-            @Override public java.lang.String getCdmaMin(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public java.lang.String getCdmaMin(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 java.lang.String _result;
@@ -3064,26 +2999,26 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getCdmaMin, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readString();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Has the calling application been granted special privileges by the carrier.
-             *
+             * <p/>
              * If any of the packages in the calling UID has carrier privileges, the
              * call will return true. This access is granted by the owner of the UICC
              * card and does not depend on the registered carrier.
-             *
+             * <p/>
              * TODO: Add a link to documentation.
              *
              * @return carrier privilege status defined in TelephonyManager.
              */
-            @Override public int hasCarrierPrivileges() throws android.os.RemoteException
-            {
+            @Override
+            public int hasCarrierPrivileges() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -3092,18 +3027,18 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_hasCarrierPrivileges, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Similar to above, but check for pkg whose name is pkgname.
              */
-            @Override public int checkCarrierPrivilegesForPackage(java.lang.String pkgname) throws android.os.RemoteException
-            {
+            @Override
+            public int checkCarrierPrivilegesForPackage(java.lang.String pkgname) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
@@ -3113,69 +3048,68 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_checkCarrierPrivilegesForPackage, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the package name of the carrier apps that should handle the input intent.
              *
              * @param packageManager PackageManager for getting receivers.
-             * @param intent Intent that will be sent.
+             * @param intent         Intent that will be sent.
              * @return list of carrier app package names that can handle the intent.
-             *         Returns null if there is an error and an empty list if there
-             *         are no matching packages.
+             * Returns null if there is an error and an empty list if there
+             * are no matching packages.
              */
-            @Override public java.util.List<java.lang.String> getCarrierPackageNamesForIntent(android.content.Intent intent) throws android.os.RemoteException
-            {
+            @Override
+            public java.util.List<java.lang.String> getCarrierPackageNamesForIntent(android.content.Intent intent) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 java.util.List<java.lang.String> _result;
                 try {
                     _data.writeInterfaceToken(DESCRIPTOR);
-                    if ((intent!=null)) {
+                    if ((intent != null)) {
                         _data.writeInt(1);
                         intent.writeToParcel(_data, 0);
-                    }
-                    else {
+                    } else {
                         _data.writeInt(0);
                     }
                     mRemote.transact(Stub.TRANSACTION_getCarrierPackageNamesForIntent, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.createStringArrayList();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Set whether Android should display a simplified Mobile Network Settings UI
              * for the current ICCID.
              *
-             * @param subId for which the simplified UI should be enabled or disabled.
+             * @param subId  for which the simplified UI should be enabled or disabled.
              * @param enable true means enabling the simplified UI.
              */
-            @Override public void enableSimplifiedNetworkSettingsForSubscriber(long subId, boolean enable) throws android.os.RemoteException
-            {
+            @Override
+            public void enableSimplifiedNetworkSettingsForSubscriber(long subId, boolean enable) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 try {
                     _data.writeInterfaceToken(DESCRIPTOR);
                     _data.writeLong(subId);
-                    _data.writeInt(((enable)?(1):(0)));
+                    _data.writeInt(((enable) ? (1) : (0)));
                     mRemote.transact(Stub.TRANSACTION_enableSimplifiedNetworkSettingsForSubscriber, _data, _reply, 0);
                     _reply.readException();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
             }
+
             /**
              * Get whether a simplified Mobile Network Settings UI is enabled for the
              * current ICCID.
@@ -3183,8 +3117,8 @@ public interface ITelephony extends android.os.IInterface
              * @param subId for which the simplified UI should be enabled or disabled.
              * @return true if the simplified UI is enabled.
              */
-            @Override public boolean getSimplifiedNetworkSettingsEnabledForSubscriber(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public boolean getSimplifiedNetworkSettingsEnabledForSubscriber(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -3193,26 +3127,26 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeLong(subId);
                     mRemote.transact(Stub.TRANSACTION_getSimplifiedNetworkSettingsEnabledForSubscriber, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Set the line 1 phone number string and its alphatag for the current ICCID
              * for display purpose only, for example, displayed in Phone Status. It won't
              * change the actual MSISDN/MDN. To unset alphatag or number, pass in a null
              * value.
              *
-             * @param subId the subscriber that the alphatag and dialing number belongs to.
+             * @param subId    the subscriber that the alphatag and dialing number belongs to.
              * @param alphaTag alpha-tagging of the dailing nubmer
-             * @param number The dialing number
+             * @param number   The dialing number
              */
-            @Override public void setLine1NumberForDisplayForSubscriber(long subId, java.lang.String alphaTag, java.lang.String number) throws android.os.RemoteException
-            {
+            @Override
+            public void setLine1NumberForDisplayForSubscriber(long subId, java.lang.String alphaTag, java.lang.String number) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 try {
@@ -3222,12 +3156,12 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeString(number);
                     mRemote.transact(Stub.TRANSACTION_setLine1NumberForDisplayForSubscriber, _data, _reply, 0);
                     _reply.readException();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
             }
+
             /**
              * Returns the displayed dialing number string if it was set previously via
              * {@link #setLine1NumberForDisplay}. Otherwise returns null.
@@ -3235,8 +3169,8 @@ public interface ITelephony extends android.os.IInterface
              * @param subId whose dialing number for line 1 is returned.
              * @return the displayed dialing number if set, or null if not set.
              */
-            @Override public java.lang.String getLine1NumberForDisplay(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public java.lang.String getLine1NumberForDisplay(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 java.lang.String _result;
@@ -3246,23 +3180,23 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getLine1NumberForDisplay, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readString();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the displayed alphatag of the dialing number if it was set
              * previously via {@link #setLine1NumberForDisplay}. Otherwise returns null.
              *
              * @param subId whose alphatag associated with line 1 is returned.
              * @return the displayed alphatag of the dialing number if set, or null if
-             *         not set.
+             * not set.
              */
-            @Override public java.lang.String getLine1AlphaTagForDisplay(long subId) throws android.os.RemoteException
-            {
+            @Override
+            public java.lang.String getLine1AlphaTagForDisplay(long subId) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 java.lang.String _result;
@@ -3272,30 +3206,30 @@ public interface ITelephony extends android.os.IInterface
                     mRemote.transact(Stub.TRANSACTION_getLine1AlphaTagForDisplay, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readString();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Override the operator branding for the current ICCID.
-             *
+             * <p/>
              * Once set, whenever the SIM is present in the device, the service
              * provider name (SPN) and the operator name will both be replaced by the
              * brand value input. To unset the value, the same function should be
              * called with a null brand value.
-             *
+             * <p/>
              * <p>Requires Permission:
-             *   {@link android.Manifest.permission#MODIFY_PHONE_STATE MODIFY_PHONE_STATE}
-             *  or has to be carrier app - see #hasCarrierPrivileges.
+             * {@link android.Manifest.permission#MODIFY_PHONE_STATE MODIFY_PHONE_STATE}
+             * or has to be carrier app - see #hasCarrierPrivileges.
              *
              * @param brand The brand name to display/set.
              * @return true if the operation was executed correctly.
              */
-            @Override public boolean setOperatorBrandOverride(java.lang.String brand) throws android.os.RemoteException
-            {
+            @Override
+            public boolean setOperatorBrandOverride(java.lang.String brand) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -3304,55 +3238,54 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeString(brand);
                     mRemote.transact(Stub.TRANSACTION_setOperatorBrandOverride, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Returns the result and response from RIL for oem request
              *
-             * @param oemReq the data is sent to ril.
+             * @param oemReq  the data is sent to ril.
              * @param oemResp the respose data from RIL.
              * @return negative value request was not handled or get error
-             *         0 request was handled succesfully, but no response data
-             *         positive value success, data length of response
+             * 0 request was handled succesfully, but no response data
+             * positive value success, data length of response
              */
-            @Override public int invokeOemRilRequestRaw(byte[] oemReq, byte[] oemResp) throws android.os.RemoteException
-            {
+            @Override
+            public int invokeOemRilRequestRaw(byte[] oemReq, byte[] oemResp) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 int _result;
                 try {
                     _data.writeInterfaceToken(DESCRIPTOR);
                     _data.writeByteArray(oemReq);
-                    if ((oemResp==null)) {
+                    if ((oemResp == null)) {
                         _data.writeInt(-1);
-                    }
-                    else {
+                    } else {
                         _data.writeInt(oemResp.length);
                     }
                     mRemote.transact(Stub.TRANSACTION_invokeOemRilRequestRaw, _data, _reply, 0);
                     _reply.readException();
                     _result = _reply.readInt();
                     _reply.readByteArray(oemResp);
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Check if any mobile Radios need to be shutdown.
              *
              * @return true is any mobile radio needs to be shutdown
              */
-            @Override public boolean needMobileRadioShutdown() throws android.os.RemoteException
-            {
+            @Override
+            public boolean needMobileRadioShutdown() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 boolean _result;
@@ -3360,32 +3293,32 @@ public interface ITelephony extends android.os.IInterface
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_needMobileRadioShutdown, _data, _reply, 0);
                     _reply.readException();
-                    _result = (0!=_reply.readInt());
-                }
-                finally {
+                    _result = (0 != _reply.readInt());
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
                 return _result;
             }
+
             /**
              * Shutdown Mobile Radios
              */
-            @Override public void shutdownMobileRadios() throws android.os.RemoteException
-            {
+            @Override
+            public void shutdownMobileRadios() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
                 android.os.Parcel _reply = android.os.Parcel.obtain();
                 try {
                     _data.writeInterfaceToken(DESCRIPTOR);
                     mRemote.transact(Stub.TRANSACTION_shutdownMobileRadios, _data, _reply, 0);
                     _reply.readException();
-                }
-                finally {
+                } finally {
                     _reply.recycle();
                     _data.recycle();
                 }
             }
         }
+
         static final int TRANSACTION_dial = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
         static final int TRANSACTION_call = (android.os.IBinder.FIRST_CALL_TRANSACTION + 1);
         static final int TRANSACTION_endCall = (android.os.IBinder.FIRST_CALL_TRANSACTION + 2);
@@ -3487,63 +3420,75 @@ public interface ITelephony extends android.os.IInterface
         static final int TRANSACTION_needMobileRadioShutdown = (android.os.IBinder.FIRST_CALL_TRANSACTION + 98);
         static final int TRANSACTION_shutdownMobileRadios = (android.os.IBinder.FIRST_CALL_TRANSACTION + 99);
     }
+
     /**
      * Dial a number. This doesn't place the call. It displays
      * the Dialer screen.
+     *
      * @param number the number to be dialed. If null, this
-     * would display the Dialer screen with no number pre-filled.
+     *               would display the Dialer screen with no number pre-filled.
      */
     public void dial(java.lang.String number) throws android.os.RemoteException;
+
     /**
      * Place a call to the specified number.
+     *
      * @param number the number to be called.
      */
     public void call(java.lang.String callingPackage, java.lang.String number) throws android.os.RemoteException;
+
     /**
      * End call if there is a call in progress, otherwise does nothing.
      *
      * @return whether it hung up
      */
     public boolean endCall() throws android.os.RemoteException;
+
     /**
      * End call on particular subId or go to the Home screen
+     *
      * @param subId user preferred subId.
      * @return whether it hung up
      */
     public boolean endCallForSubscriber(long subId) throws android.os.RemoteException;
+
     /**
      * Answer the currently-ringing call.
-     *
+     * <p/>
      * If there's already a current active call, that call will be
      * automatically put on hold.  If both lines are currently in use, the
      * current active call will be ended.
-     *
+     * <p/>
      * TODO: provide a flag to let the caller specify what policy to use
      * if both lines are in use.  (The current behavior is hardwired to
      * "answer incoming, end ongoing", which is how the CALL button
      * is specced to behave.)
-     *
+     * <p/>
      * TODO: this should be a oneway call (especially since it's called
      * directly from the key queue thread).
      */
     public void answerRingingCall() throws android.os.RemoteException;
+
     /**
      * Silence the ringer if an incoming call is currently ringing.
      * (If vibrating, stop the vibrator also.)
-     *
+     * <p/>
      * It's safe to call this if the ringer has already been silenced, or
      * even if there's no incoming call.  (If so, this method will do nothing.)
-     *
+     * <p/>
      * TODO: this should be a oneway call too (see above).
-     *       (Actually *all* the methods here that return void can
-     *       probably be oneway.)
+     * (Actually *all* the methods here that return void can
+     * probably be oneway.)
      */
     public void silenceRinger() throws android.os.RemoteException;
+
     /**
      * Check if we are in either an active or holding call
+     *
      * @return true if the phone state is OFFHOOK.
      */
     public boolean isOffhook() throws android.os.RemoteException;
+
     /**
      * Check if a particular subId has an active or holding call
      *
@@ -3551,6 +3496,7 @@ public interface ITelephony extends android.os.IInterface
      * @return true if the phone state is OFFHOOK.
      */
     public boolean isOffhookForSubscriber(long subId) throws android.os.RemoteException;
+
     /**
      * Check if an incoming phone call is ringing or call waiting
      * on a particular subId.
@@ -3559,16 +3505,21 @@ public interface ITelephony extends android.os.IInterface
      * @return true if the phone state is RINGING.
      */
     public boolean isRingingForSubscriber(long subId) throws android.os.RemoteException;
+
     /**
      * Check if an incoming phone call is ringing or call waiting.
+     *
      * @return true if the phone state is RINGING.
      */
     public boolean isRinging() throws android.os.RemoteException;
+
     /**
      * Check if the phone is idle.
+     *
      * @return true if the phone state is IDLE.
      */
     public boolean isIdle() throws android.os.RemoteException;
+
     /**
      * Check if the phone is idle on a particular subId.
      *
@@ -3576,89 +3527,112 @@ public interface ITelephony extends android.os.IInterface
      * @return true if the phone state is IDLE.
      */
     public boolean isIdleForSubscriber(long subId) throws android.os.RemoteException;
+
     /**
      * Check to see if the radio is on or not.
+     *
      * @return returns true if the radio is on.
      */
     public boolean isRadioOn() throws android.os.RemoteException;
+
     /**
      * Check to see if the radio is on or not on particular subId.
+     *
      * @param subId user preferred subId.
      * @return returns true if the radio is on.
      */
     public boolean isRadioOnForSubscriber(long subId) throws android.os.RemoteException;
+
     /**
      * Check if the SIM pin lock is enabled.
+     *
      * @return true if the SIM pin lock is enabled.
      */
     public boolean isSimPinEnabled() throws android.os.RemoteException;
+
     /**
      * Supply a pin to unlock the SIM.  Blocks until a result is determined.
+     *
      * @param pin The pin to check.
      * @return whether the operation was a success.
      */
     public boolean supplyPin(java.lang.String pin) throws android.os.RemoteException;
+
     /**
      * Supply a pin to unlock the SIM for particular subId.
      * Blocks until a result is determined.
-     * @param pin The pin to check.
+     *
+     * @param pin   The pin to check.
      * @param subId user preferred subId.
      * @return whether the operation was a success.
      */
     public boolean supplyPinForSubscriber(long subId, java.lang.String pin) throws android.os.RemoteException;
+
     /**
      * Supply puk to unlock the SIM and set SIM pin to new pin.
-     *  Blocks until a result is determined.
+     * Blocks until a result is determined.
+     *
      * @param puk The puk to check.
-     *        pin The new pin to be set in SIM
+     *            pin The new pin to be set in SIM
      * @return whether the operation was a success.
      */
     public boolean supplyPuk(java.lang.String puk, java.lang.String pin) throws android.os.RemoteException;
+
     /**
      * Supply puk to unlock the SIM and set SIM pin to new pin.
-     *  Blocks until a result is determined.
-     * @param puk The puk to check.
-     *        pin The new pin to be set in SIM
+     * Blocks until a result is determined.
+     *
+     * @param puk   The puk to check.
+     *              pin The new pin to be set in SIM
      * @param subId user preferred subId.
      * @return whether the operation was a success.
      */
     public boolean supplyPukForSubscriber(long subId, java.lang.String puk, java.lang.String pin) throws android.os.RemoteException;
+
     /**
      * Supply a pin to unlock the SIM.  Blocks until a result is determined.
      * Returns a specific success/error code.
+     *
      * @param pin The pin to check.
      * @return retValue[0] = Phone.PIN_RESULT_SUCCESS on success. Otherwise error code
-     *         retValue[1] = number of attempts remaining if known otherwise -1
+     * retValue[1] = number of attempts remaining if known otherwise -1
      */
     public int[] supplyPinReportResult(java.lang.String pin) throws android.os.RemoteException;
+
     /**
      * Supply a pin to unlock the SIM.  Blocks until a result is determined.
      * Returns a specific success/error code.
+     *
      * @param pin The pin to check.
      * @return retValue[0] = Phone.PIN_RESULT_SUCCESS on success. Otherwise error code
-     *         retValue[1] = number of attempts remaining if known otherwise -1
+     * retValue[1] = number of attempts remaining if known otherwise -1
      */
     public int[] supplyPinReportResultForSubscriber(long subId, java.lang.String pin) throws android.os.RemoteException;
+
     /**
      * Supply puk to unlock the SIM and set SIM pin to new pin.
      * Blocks until a result is determined.
      * Returns a specific success/error code
+     *
      * @param puk The puk to check
-     *        pin The pin to check.
+     *            pin The pin to check.
      * @return retValue[0] = Phone.PIN_RESULT_SUCCESS on success. Otherwise error code
-     *         retValue[1] = number of attempts remaining if known otherwise -1
+     * retValue[1] = number of attempts remaining if known otherwise -1
      */
     public int[] supplyPukReportResult(java.lang.String puk, java.lang.String pin) throws android.os.RemoteException;
+
     /**
      * Supply puk to unlock the SIM and set SIM pin to new pin.
      * Blocks until a result is determined.
      * Returns a specific success/error code
+     *
      * @param puk The puk to check
-     *        pin The pin to check.
+     *            pin The pin to check.
      * @return retValue[0] = Phone.PIN_RESULT_SUCCESS on success. Otherwise error code
-     *         retValue[1] = number of attempts remaining if known otherwise -1
+     * retValue[1] = number of attempts remaining if known otherwise -1
      */
     public int[] supplyPukReportResultForSubscriber(long subId, java.lang.String puk, java.lang.String pin) throws android.os.RemoteException;
+
     /**
      * Handles PIN MMI commands (PIN/PIN2/PUK/PUK2), which are initiated
      * without SEND (so <code>dial</code> is not appropriate).
@@ -3667,188 +3641,244 @@ public interface ITelephony extends android.os.IInterface
      * @return true if MMI command is executed.
      */
     public boolean handlePinMmi(java.lang.String dialString) throws android.os.RemoteException;
+
     /**
      * Handles PIN MMI commands (PIN/PIN2/PUK/PUK2), which are initiated
      * without SEND (so <code>dial</code> is not appropriate) for
      * a particular subId.
+     *
      * @param dialString the MMI command to be executed.
-     * @param subId user preferred subId.
+     * @param subId      user preferred subId.
      * @return true if MMI command is executed.
      */
     public boolean handlePinMmiForSubscriber(long subId, java.lang.String dialString) throws android.os.RemoteException;
+
     /**
      * Toggles the radio on or off.
      */
     public void toggleRadioOnOff() throws android.os.RemoteException;
+
     /**
      * Toggles the radio on or off on particular subId.
+     *
      * @param subId user preferred subId.
      */
     public void toggleRadioOnOffForSubscriber(long subId) throws android.os.RemoteException;
+
     /**
      * Set the radio to on or off
      */
     public boolean setRadio(boolean turnOn) throws android.os.RemoteException;
+
     /**
      * Set the radio to on or off on particular subId.
+     *
      * @param subId user preferred subId.
      */
     public boolean setRadioForSubscriber(long subId, boolean turnOn) throws android.os.RemoteException;
+
     /**
      * Set the radio to on or off unconditionally
      */
     public boolean setRadioPower(boolean turnOn) throws android.os.RemoteException;
+
     /**
      * Request to update location information in service state
      */
     public void updateServiceLocation() throws android.os.RemoteException;
+
     /**
      * Request to update location information for a subscrition in service state
+     *
      * @param subId user preferred subId.
      */
     public void updateServiceLocationForSubscriber(long subId) throws android.os.RemoteException;
+
     /**
      * Enable location update notifications.
      */
     public void enableLocationUpdates() throws android.os.RemoteException;
+
     /**
      * Enable location update notifications.
+     *
      * @param subId user preferred subId.
      */
     public void enableLocationUpdatesForSubscriber(long subId) throws android.os.RemoteException;
+
     /**
      * Disable location update notifications.
      */
     public void disableLocationUpdates() throws android.os.RemoteException;
+
     /**
      * Disable location update notifications.
+     *
      * @param subId user preferred subId.
      */
     public void disableLocationUpdatesForSubscriber(long subId) throws android.os.RemoteException;
+
     /**
      * Allow mobile data connections.
      */
     public boolean enableDataConnectivity() throws android.os.RemoteException;
+
     /**
      * Disallow mobile data connections.
      */
     public boolean disableDataConnectivity() throws android.os.RemoteException;
+
     /**
      * Report whether data connectivity is possible.
      */
     public boolean isDataConnectivityPossible() throws android.os.RemoteException;
+
     public android.os.Bundle getCellLocation() throws android.os.RemoteException;
+
     /**
      * Returns the neighboring cell information of the device.
      */
     public java.util.List<android.telephony.NeighboringCellInfo> getNeighboringCellInfo(java.lang.String callingPkg) throws android.os.RemoteException;
+
     public int getCallState() throws android.os.RemoteException;
+
     /**
      * Returns the call state for a subId.
      */
     public int getCallStateForSubscriber(long subId) throws android.os.RemoteException;
+
     public int getDataActivity() throws android.os.RemoteException;
+
     public int getDataState() throws android.os.RemoteException;
+
     /**
      * Returns the current active phone type as integer.
      * Returns TelephonyManager.PHONE_TYPE_CDMA if RILConstants.CDMA_PHONE
      * and TelephonyManager.PHONE_TYPE_GSM if RILConstants.GSM_PHONE
      */
     public int getActivePhoneType() throws android.os.RemoteException;
+
     /**
      * Returns the current active phone type as integer for particular subId.
      * Returns TelephonyManager.PHONE_TYPE_CDMA if RILConstants.CDMA_PHONE
      * and TelephonyManager.PHONE_TYPE_GSM if RILConstants.GSM_PHONE
+     *
      * @param subId user preferred subId.
      */
     public int getActivePhoneTypeForSubscriber(long subId) throws android.os.RemoteException;
+
     /**
      * Returns the CDMA ERI icon index to display
      */
     public int getCdmaEriIconIndex() throws android.os.RemoteException;
+
     /**
      * Returns the CDMA ERI icon index to display on particular subId.
+     *
      * @param subId user preferred subId.
      */
     public int getCdmaEriIconIndexForSubscriber(long subId) throws android.os.RemoteException;
+
     /**
      * Returns the CDMA ERI icon mode,
      * 0 - ON
      * 1 - FLASHING
      */
     public int getCdmaEriIconMode() throws android.os.RemoteException;
+
     /**
      * Returns the CDMA ERI icon mode on particular subId,
      * 0 - ON
      * 1 - FLASHING
+     *
      * @param subId user preferred subId.
      */
     public int getCdmaEriIconModeForSubscriber(long subId) throws android.os.RemoteException;
+
     /**
      * Returns the CDMA ERI text,
      */
     public java.lang.String getCdmaEriText() throws android.os.RemoteException;
+
     /**
      * Returns the CDMA ERI text for particular subId,
+     *
      * @param subId user preferred subId.
      */
     public java.lang.String getCdmaEriTextForSubscriber(long subId) throws android.os.RemoteException;
+
     /**
      * Returns true if OTA service provisioning needs to run.
      * Only relevant on some technologies, others will always
      * return false.
      */
     public boolean needsOtaServiceProvisioning() throws android.os.RemoteException;
+
     /**
      * Returns the unread count of voicemails
      */
     public int getVoiceMessageCount() throws android.os.RemoteException;
+
     /**
      * Returns the unread count of voicemails for a subId.
+     *
      * @param subId user preferred subId.
-     * Returns the unread count of voicemails
+     *              Returns the unread count of voicemails
      */
     public int getVoiceMessageCountForSubscriber(long subId) throws android.os.RemoteException;
+
     /**
      * Returns the network type for data transmission
      */
     public int getNetworkType() throws android.os.RemoteException;
+
     /**
      * Returns the network type of a subId.
+     *
      * @param subId user preferred subId.
-     * Returns the network type
+     *              Returns the network type
      */
     public int getNetworkTypeForSubscriber(long subId) throws android.os.RemoteException;
+
     /**
      * Returns the network type for data transmission
      */
     public int getDataNetworkType() throws android.os.RemoteException;
+
     /**
      * Returns the data network type of a subId
+     *
      * @param subId user preferred subId.
-     * Returns the network type
+     *              Returns the network type
      */
     public int getDataNetworkTypeForSubscriber(long subId) throws android.os.RemoteException;
+
     /**
      * Returns the network type for voice
      */
     public int getVoiceNetworkType() throws android.os.RemoteException;
+
     /**
      * Returns the voice network type of a subId
+     *
      * @param subId user preferred subId.
-     * Returns the network type
+     *              Returns the network type
      */
     public int getVoiceNetworkTypeForSubscriber(long subId) throws android.os.RemoteException;
+
     /**
      * Return true if an ICC card is present
      */
     public boolean hasIccCard() throws android.os.RemoteException;
+
     /**
      * Return true if an ICC card is present for a subId.
+     *
      * @param slotId user preferred slotId.
-     * Return true if an ICC card is present
+     *               Return true if an ICC card is present
      */
     public boolean hasIccCardUsingSlotId(long slotId) throws android.os.RemoteException;
+
     /**
      * Return if the current radio is LTE on CDMA. This
      * is a tri-state return value as for a period of time
@@ -3858,6 +3888,7 @@ public interface ITelephony extends android.os.IInterface
      * or {@link PHone#LTE_ON_CDMA_TRUE}
      */
     public int getLteOnCdmaMode() throws android.os.RemoteException;
+
     /**
      * Return if the current radio is LTE on CDMA. This
      * is a tri-state return value as for a period of time
@@ -3867,95 +3898,106 @@ public interface ITelephony extends android.os.IInterface
      * or {@link PHone#LTE_ON_CDMA_TRUE}
      */
     public int getLteOnCdmaModeForSubscriber(long subId) throws android.os.RemoteException;
+
     /**
      * Returns the all observed cell information of the device.
      */
     public java.util.List<android.telephony.CellInfo> getAllCellInfo() throws android.os.RemoteException;
+
     /**
      * Sets minimum time in milli-seconds between onCellInfoChanged
      */
     public void setCellInfoListRate(int rateInMillis) throws android.os.RemoteException;
+
     /**
      * get default sim
+     *
      * @return sim id
      */
     public int getDefaultSim() throws android.os.RemoteException;
+
     /**
      * Opens a logical channel to the ICC card.
-     *
+     * <p/>
      * Input parameters equivalent to TS 27.007 AT+CCHO command.
      *
      * @param AID Application id. See ETSI 102.221 and 101.220.
      * @return an IccOpenLogicalChannelResponse object.
      */
     public android.telephony.IccOpenLogicalChannelResponse iccOpenLogicalChannel(java.lang.String AID) throws android.os.RemoteException;
+
     /**
      * Closes a previously opened logical channel to the ICC card.
-     *
+     * <p/>
      * Input parameters equivalent to TS 27.007 AT+CCHC command.
      *
      * @param channel is the channel id to be closed as retruned by a
-     *            successful iccOpenLogicalChannel.
+     *                successful iccOpenLogicalChannel.
      * @return true if the channel was closed successfully.
      */
     public boolean iccCloseLogicalChannel(int channel) throws android.os.RemoteException;
+
     /**
      * Transmit an APDU to the ICC card over a logical channel.
-     *
+     * <p/>
      * Input parameters equivalent to TS 27.007 AT+CGLA command.
      *
-     * @param channel is the channel id to be closed as retruned by a
-     *            successful iccOpenLogicalChannel.
-     * @param cla Class of the APDU command.
+     * @param channel     is the channel id to be closed as retruned by a
+     *                    successful iccOpenLogicalChannel.
+     * @param cla         Class of the APDU command.
      * @param instruction Instruction of the APDU command.
-     * @param p1 P1 value of the APDU command.
-     * @param p2 P2 value of the APDU command.
-     * @param p3 P3 value of the APDU command. If p3 is negative a 4 byte APDU
-     *            is sent to the SIM.
-     * @param data Data to be sent with the APDU.
+     * @param p1          P1 value of the APDU command.
+     * @param p2          P2 value of the APDU command.
+     * @param p3          P3 value of the APDU command. If p3 is negative a 4 byte APDU
+     *                    is sent to the SIM.
+     * @param data        Data to be sent with the APDU.
      * @return The APDU response from the ICC card with the status appended at
-     *            the end.
+     * the end.
      */
     public java.lang.String iccTransmitApduLogicalChannel(int channel, int cla, int instruction, int p1, int p2, int p3, java.lang.String data) throws android.os.RemoteException;
+
     /**
      * Transmit an APDU to the ICC card over the basic channel.
-     *
+     * <p/>
      * Input parameters equivalent to TS 27.007 AT+CSIM command.
      *
-     * @param cla Class of the APDU command.
+     * @param cla         Class of the APDU command.
      * @param instruction Instruction of the APDU command.
-     * @param p1 P1 value of the APDU command.
-     * @param p2 P2 value of the APDU command.
-     * @param p3 P3 value of the APDU command. If p3 is negative a 4 byte APDU
-     *            is sent to the SIM.
-     * @param data Data to be sent with the APDU.
+     * @param p1          P1 value of the APDU command.
+     * @param p2          P2 value of the APDU command.
+     * @param p3          P3 value of the APDU command. If p3 is negative a 4 byte APDU
+     *                    is sent to the SIM.
+     * @param data        Data to be sent with the APDU.
      * @return The APDU response from the ICC card with the status appended at
-     *            the end.
+     * the end.
      */
     public java.lang.String iccTransmitApduBasicChannel(int cla, int instruction, int p1, int p2, int p3, java.lang.String data) throws android.os.RemoteException;
+
     /**
      * Returns the response APDU for a command APDU sent through SIM_IO.
      *
      * @param fileID
      * @param command
-     * @param p1 P1 value of the APDU command.
-     * @param p2 P2 value of the APDU command.
-     * @param p3 P3 value of the APDU command.
+     * @param p1       P1 value of the APDU command.
+     * @param p2       P2 value of the APDU command.
+     * @param p3       P3 value of the APDU command.
      * @param filePath
      * @return The APDU response.
      */
     public byte[] iccExchangeSimIO(int fileID, int command, int p1, int p2, int p3, java.lang.String filePath) throws android.os.RemoteException;
+
     /**
      * Send ENVELOPE to the SIM and returns the response.
      *
-     * @param contents  String containing SAT/USAT response in hexadecimal
-     *                  format starting with command tag. See TS 102 223 for
-     *                  details.
+     * @param contents String containing SAT/USAT response in hexadecimal
+     *                 format starting with command tag. See TS 102 223 for
+     *                 details.
      * @return The APDU response from the ICC card, with the last 4 bytes
-     *         being the status word. If the command fails, returns an empty
-     *         string.
+     * being the status word. If the command fails, returns an empty
+     * string.
      */
     public java.lang.String sendEnvelopeWithStatus(java.lang.String content) throws android.os.RemoteException;
+
     /**
      * Read one of the NV items defined in {@link RadioNVItems} / {@code ril_nv_items.h}.
      * Used for device configuration by some CDMA operators.
@@ -3964,15 +4006,17 @@ public interface ITelephony extends android.os.IInterface
      * @return the NV item as a String, or null on any failure.
      */
     public java.lang.String nvReadItem(int itemID) throws android.os.RemoteException;
+
     /**
      * Write one of the NV items defined in {@link RadioNVItems} / {@code ril_nv_items.h}.
      * Used for device configuration by some CDMA operators.
      *
-     * @param itemID the ID of the item to read.
+     * @param itemID    the ID of the item to read.
      * @param itemValue the value to write, as a String.
      * @return true on success; false on any failure.
      */
     public boolean nvWriteItem(int itemID, java.lang.String itemValue) throws android.os.RemoteException;
+
     /**
      * Update the CDMA Preferred Roaming List (PRL) in the radio NV storage.
      * Used for device configuration by some CDMA operators.
@@ -3981,6 +4025,7 @@ public interface ITelephony extends android.os.IInterface
      * @return true on success; false on any failure.
      */
     public boolean nvWriteCdmaPrl(byte[] preferredRoamingList) throws android.os.RemoteException;
+
     /**
      * Perform the specified type of NV config reset. The radio will be taken offline
      * and the device must be rebooted after the operation. Used for device
@@ -3990,6 +4035,7 @@ public interface ITelephony extends android.os.IInterface
      * @return true on success; false on any failure.
      */
     public boolean nvResetConfig(int resetType) throws android.os.RemoteException;
+
     /*
      * Get the calculated preferred network type.
      * Used for device configuration by some CDMA operators.
@@ -3997,6 +4043,7 @@ public interface ITelephony extends android.os.IInterface
      * @return the calculated preferred network type, defined in RILConstants.java.
      */
     public int getCalculatedPreferredNetworkType() throws android.os.RemoteException;
+
     /*
      * Get the preferred network type.
      * Used for device configuration by some CDMA operators.
@@ -4004,6 +4051,7 @@ public interface ITelephony extends android.os.IInterface
      * @return the preferred network type, defined in RILConstants.java.
      */
     public int getPreferredNetworkType() throws android.os.RemoteException;
+
     /**
      * Set the preferred network type.
      * Used for device configuration by some CDMA operators.
@@ -4012,71 +4060,85 @@ public interface ITelephony extends android.os.IInterface
      * @return true on success; false on any failure.
      */
     public boolean setPreferredNetworkType(int networkType) throws android.os.RemoteException;
+
     /**
      * User enable/disable Mobile Data.
      *
      * @param enable true to turn on, else false
      */
     public void setDataEnabled(boolean enable) throws android.os.RemoteException;
+
     /**
      * Get the user enabled state of Mobile Data.
      *
      * @return true on enabled
      */
     public boolean getDataEnabled() throws android.os.RemoteException;
+
     /**
      * Get P-CSCF address from PCO after data connection is established or modified.
+     *
      * @param apnType the apnType, "ims" for IMS APN, "emergency" for EMERGENCY APN
      */
     public java.lang.String[] getPcscfAddress(java.lang.String apnType) throws android.os.RemoteException;
+
     /**
      * Set IMS registration state
      */
     public void setImsRegistrationState(boolean registered) throws android.os.RemoteException;
+
     /**
      * Return MDN string for CDMA phone.
+     *
      * @param subId user preferred subId.
      */
     public java.lang.String getCdmaMdn(long subId) throws android.os.RemoteException;
+
     /**
      * Return MIN string for CDMA phone.
+     *
      * @param subId user preferred subId.
      */
     public java.lang.String getCdmaMin(long subId) throws android.os.RemoteException;
+
     /**
      * Has the calling application been granted special privileges by the carrier.
-     *
+     * <p/>
      * If any of the packages in the calling UID has carrier privileges, the
      * call will return true. This access is granted by the owner of the UICC
      * card and does not depend on the registered carrier.
-     *
+     * <p/>
      * TODO: Add a link to documentation.
      *
      * @return carrier privilege status defined in TelephonyManager.
      */
     public int hasCarrierPrivileges() throws android.os.RemoteException;
+
     /**
      * Similar to above, but check for pkg whose name is pkgname.
      */
     public int checkCarrierPrivilegesForPackage(java.lang.String pkgname) throws android.os.RemoteException;
+
     /**
      * Returns the package name of the carrier apps that should handle the input intent.
      *
      * @param packageManager PackageManager for getting receivers.
-     * @param intent Intent that will be sent.
+     * @param intent         Intent that will be sent.
      * @return list of carrier app package names that can handle the intent.
-     *         Returns null if there is an error and an empty list if there
-     *         are no matching packages.
+     * Returns null if there is an error and an empty list if there
+     * are no matching packages.
      */
     public java.util.List<java.lang.String> getCarrierPackageNamesForIntent(android.content.Intent intent) throws android.os.RemoteException;
+
     /**
      * Set whether Android should display a simplified Mobile Network Settings UI
      * for the current ICCID.
      *
-     * @param subId for which the simplified UI should be enabled or disabled.
+     * @param subId  for which the simplified UI should be enabled or disabled.
      * @param enable true means enabling the simplified UI.
      */
     public void enableSimplifiedNetworkSettingsForSubscriber(long subId, boolean enable) throws android.os.RemoteException;
+
     /**
      * Get whether a simplified Mobile Network Settings UI is enabled for the
      * current ICCID.
@@ -4085,17 +4147,19 @@ public interface ITelephony extends android.os.IInterface
      * @return true if the simplified UI is enabled.
      */
     public boolean getSimplifiedNetworkSettingsEnabledForSubscriber(long subId) throws android.os.RemoteException;
+
     /**
      * Set the line 1 phone number string and its alphatag for the current ICCID
      * for display purpose only, for example, displayed in Phone Status. It won't
      * change the actual MSISDN/MDN. To unset alphatag or number, pass in a null
      * value.
      *
-     * @param subId the subscriber that the alphatag and dialing number belongs to.
+     * @param subId    the subscriber that the alphatag and dialing number belongs to.
      * @param alphaTag alpha-tagging of the dailing nubmer
-     * @param number The dialing number
+     * @param number   The dialing number
      */
     public void setLine1NumberForDisplayForSubscriber(long subId, java.lang.String alphaTag, java.lang.String number) throws android.os.RemoteException;
+
     /**
      * Returns the displayed dialing number string if it was set previously via
      * {@link #setLine1NumberForDisplay}. Otherwise returns null.
@@ -4104,47 +4168,52 @@ public interface ITelephony extends android.os.IInterface
      * @return the displayed dialing number if set, or null if not set.
      */
     public java.lang.String getLine1NumberForDisplay(long subId) throws android.os.RemoteException;
+
     /**
      * Returns the displayed alphatag of the dialing number if it was set
      * previously via {@link #setLine1NumberForDisplay}. Otherwise returns null.
      *
      * @param subId whose alphatag associated with line 1 is returned.
      * @return the displayed alphatag of the dialing number if set, or null if
-     *         not set.
+     * not set.
      */
     public java.lang.String getLine1AlphaTagForDisplay(long subId) throws android.os.RemoteException;
+
     /**
      * Override the operator branding for the current ICCID.
-     *
+     * <p/>
      * Once set, whenever the SIM is present in the device, the service
      * provider name (SPN) and the operator name will both be replaced by the
      * brand value input. To unset the value, the same function should be
      * called with a null brand value.
-     *
+     * <p/>
      * <p>Requires Permission:
-     *   {@link android.Manifest.permission#MODIFY_PHONE_STATE MODIFY_PHONE_STATE}
-     *  or has to be carrier app - see #hasCarrierPrivileges.
+     * {@link android.Manifest.permission#MODIFY_PHONE_STATE MODIFY_PHONE_STATE}
+     * or has to be carrier app - see #hasCarrierPrivileges.
      *
      * @param brand The brand name to display/set.
      * @return true if the operation was executed correctly.
      */
     public boolean setOperatorBrandOverride(java.lang.String brand) throws android.os.RemoteException;
+
     /**
      * Returns the result and response from RIL for oem request
      *
-     * @param oemReq the data is sent to ril.
+     * @param oemReq  the data is sent to ril.
      * @param oemResp the respose data from RIL.
      * @return negative value request was not handled or get error
-     *         0 request was handled succesfully, but no response data
-     *         positive value success, data length of response
+     * 0 request was handled succesfully, but no response data
+     * positive value success, data length of response
      */
     public int invokeOemRilRequestRaw(byte[] oemReq, byte[] oemResp) throws android.os.RemoteException;
+
     /**
      * Check if any mobile Radios need to be shutdown.
      *
      * @return true is any mobile radio needs to be shutdown
      */
     public boolean needMobileRadioShutdown() throws android.os.RemoteException;
+
     /**
      * Shutdown Mobile Radios
      */
